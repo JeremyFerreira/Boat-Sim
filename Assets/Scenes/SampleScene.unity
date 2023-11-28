@@ -464,8 +464,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 617bff68dad93b74693125828cced691,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 529406974}
   m_SourcePrefab: {fileID: 100100000, guid: 617bff68dad93b74693125828cced691, type: 3}
+--- !u!1 &529406973 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 617bff68dad93b74693125828cced691,
+    type: 3}
+  m_PrefabInstance: {fileID: 529406972}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &529406974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529406973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e85e1a535a5bd694c88d740eb87443e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waterMaterial: {fileID: 2100000, guid: 9390db5fa440f404ca045f53ae9f4227, type: 2}
+  DrawGizmos: 0
+  WaterSize: 99
+  DistanceBetweenPoints: 5.01
 --- !u!1 &650388979
 GameObject:
   m_ObjectHideFlags: 0

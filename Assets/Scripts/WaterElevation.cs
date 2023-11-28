@@ -10,10 +10,11 @@ public class WaterElevation : MonoBehaviour
     private float _speed;
     [SerializeField] private Material waterMaterial;
     //debug
+    public bool DrawGizmos;
     [Range(0.0f, 1000.0f)]
-    [SerializeField] public float WaterSize;
+    public float WaterSize;
     [Range(1f, 10.0f)]
-    [SerializeField] public float DistanceBetweenPoints;
+    public float DistanceBetweenPoints;
 
     private void OnValidate()
     {
@@ -44,20 +45,24 @@ public class WaterElevation : MonoBehaviour
 
         return normal;
     }
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
         waterMaterial.SetFloat("_CurrentTime", Time.time);
         Gizmos.color = Color.blue;
-        float numberOfPoints = WaterSize / DistanceBetweenPoints;
-        for (int i = 0; i < WaterSize / DistanceBetweenPoints; i++)
+        if(DrawGizmos)
         {
-            for (int j = 0; j < WaterSize / DistanceBetweenPoints; j++)
+            float numberOfPoints = WaterSize / DistanceBetweenPoints;
+            for (int i = 0; i < numberOfPoints; i++)
             {
-                Vector3 pos = transform.position + Vector3.right * i * DistanceBetweenPoints + Vector3.forward * j * DistanceBetweenPoints;
-                pos -= Vector3.right * WaterSize / 2f + Vector3.forward * WaterSize / 2f;
-                pos.y = _amplitude * Mathf.Sin((Time.time * _speed + pos.x) * _frequency + _phase);
-                Gizmos.DrawSphere(pos, 0.2f);
+                for (int j = 0; j < numberOfPoints; j++)
+                {
+                    Vector3 pos = transform.position + Vector3.right * i * DistanceBetweenPoints + Vector3.forward * j * DistanceBetweenPoints;
+                    pos -= Vector3.right * WaterSize / 2f + Vector3.forward * WaterSize / 2f;
+                    pos.y = _amplitude * Mathf.Sin((Time.time * _speed + pos.x) * _frequency + _phase);
+                    Gizmos.DrawSphere(pos, 0.2f);
+                }
             }
         }
+        
     }
 }
