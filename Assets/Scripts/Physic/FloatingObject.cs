@@ -32,12 +32,11 @@ public class FloatingObject : MonoBehaviour
     {
         foreach (Transform floatingPoint in _floatingPoints)
         {
-            float heightBetweenPointAndWater = -(floatingPoint.transform.position.y - _waterElevation.GetElevation(floatingPoint.transform.position.x, floatingPoint.transform.position.z));
+            float heightBetweenPointAndWater = _waterElevation.GetElevation(floatingPoint.transform.position.x, floatingPoint.transform.position.z) - floatingPoint.transform.position.y;
             if (heightBetweenPointAndWater > 0)
             {
                 _objectRigidBody.AddForceAtPosition(Vector3.up * Mathf.Sqrt(heightBetweenPointAndWater) * _floatingForce / _floatingPoints.Length, floatingPoint.transform.position, ForceMode.Acceleration);
             }
-            
         }
         //calculate Drag
         float ratioMassUnderwater = GetRatioMassUnderWater();
@@ -45,7 +44,8 @@ public class FloatingObject : MonoBehaviour
         _objectRigidBody.drag = ratioMassUnderwater * _waterLinearDrag + ratioMassInAir * _airLinearDrag;
         _objectRigidBody.angularDrag =  ratioMassUnderwater * _waterAngularDrag + ratioMassInAir * _airAngularDrag;
     }
-    //Big Approximation!
+
+    //Big Approximation! (would be cool to calculate based on rotation)
     float GetRatioMassUnderWater()
     {
         float centerOfmassDisatnceToWaterSurface = _waterElevation.GetElevation(transform.position.x, transform.position.z) - _objectRigidBody.worldCenterOfMass.y;

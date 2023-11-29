@@ -98,14 +98,15 @@ Material:
     - _AlphaClip: 0
     - _AlphaToMask: 0
     - _AmbientOcclusion: 0
-    - _Amplitude: 0.3
+    - _Amplitude: 3.89
+    - _Amplitude2: 2.5
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
-    - _CurrentTime: 253.38873
+    - _CurrentTime: 214.77312
     - _Cutoff: 0.5
     - _DepthPower: 0.07
     - _DetailAlbedoMapScale: 1
@@ -114,7 +115,8 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
-    - _Frequency: 0.188
+    - _Frequency: 0.055
+    - _Frequency2: 0.034
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
@@ -123,6 +125,7 @@ Material:
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _Phase: 0
+    - _Phase2: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
@@ -135,7 +138,8 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     - _noiseScale: 100
-    - _speed: 20
+    - _speed: 14.36
+    - _speed2: 0.66
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}

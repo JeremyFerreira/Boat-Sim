@@ -8,6 +8,10 @@ public class WaterElevation : MonoBehaviour
     private float _frequency;
     private float _phase;
     private float _speed;
+    private float _amplitude2;
+    private float _frequency2;
+    private float _phase2;
+    private float _speed2;
     [SerializeField] private Material waterMaterial;
     //debug
     public bool DrawGizmos;
@@ -21,19 +25,26 @@ public class WaterElevation : MonoBehaviour
         _amplitude = waterMaterial.GetFloat("_Amplitude");
         _frequency = waterMaterial.GetFloat("_Frequency");
         _speed = waterMaterial.GetFloat("_speed");
+        _amplitude2 = waterMaterial.GetFloat("_Amplitude2");
+        _frequency2 = waterMaterial.GetFloat("_Frequency2");
+        _speed2 = waterMaterial.GetFloat("_speed2");
     }
     private void Update()
     {
         _amplitude = waterMaterial.GetFloat("_Amplitude");
         _frequency = waterMaterial.GetFloat("_Frequency");
         _speed = waterMaterial.GetFloat("_speed");
+        _amplitude2 = waterMaterial.GetFloat("_Amplitude2");
+        _frequency2 = waterMaterial.GetFloat("_Frequency2");
+        _speed2 = waterMaterial.GetFloat("_speed2");
         waterMaterial.SetFloat("_CurrentTime", Time.time);
     }
     public float GetElevation(float xPos, float zPos)
     {
-        float height = _amplitude * Mathf.Sin((Time.time * _speed + xPos) * _frequency + _phase);
+        float height = _amplitude * Mathf.Sin((Time.time * _speed + xPos) * _frequency + _phase)+_amplitude2* Mathf.Cos((Time.time * _speed2 + zPos) * _frequency2 + _phase2);
         return height;
     }
+    //need to calculate second wave
     public Vector3 GetNormal(float xPos, float zPos)
     {
         // Calculate the partial derivatives
