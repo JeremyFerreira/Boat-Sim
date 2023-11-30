@@ -29,7 +29,7 @@ public class VoilePhysic : MonoBehaviour
     }
     Vector3 GetVoileDirection()
     {
-        return transform.forward;
+        return _voileTransforms[0].forward;
     }
     private void FixedUpdate()
     {
