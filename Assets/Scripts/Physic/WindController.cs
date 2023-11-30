@@ -23,7 +23,18 @@ public class WindController : MonoBehaviour
 
     //Getters
     public float GetWindSpeed() { return windSpeed; }
-    public Vector3 GetWindDirection() { return windDirection.normalized; }
+    public Vector3 GetWindDirection() 
+    {
+        if (windDirection != Vector3.zero)
+        { 
+            return windDirection.normalized;
+        }
+        else 
+        { 
+            windDirection = Vector3.forward;
+            return Vector3.forward;
+        }
+    }
 
     void Awake()
     { 

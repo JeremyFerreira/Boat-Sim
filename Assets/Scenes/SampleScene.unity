@@ -579,7 +579,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.13608082, y: -1e-45, z: 0, w: 0.99069774}
+  m_LocalRotation: {x: 0.13608082, y: 0, z: 0, w: 0.99069774}
   m_LocalPosition: {x: 131.48, y: 33.48, z: -81.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -967,6 +967,7 @@ GameObject:
   - component: {fileID: 521642902}
   - component: {fileID: 521642903}
   - component: {fileID: 521642904}
+  - component: {fileID: 521642905}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -1096,6 +1097,25 @@ MonoBehaviour:
   _rotationForce: 15
   _gouvernailTransform: {fileID: 8781716455551298229}
   _sliderGouvernail: {fileID: 154930808}
+--- !u!114 &521642905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521642898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 990980865b140314183e522370632640, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _windForceMultiplier: 1
+  _voileFlatSurface: 30
+  _boatRigidbody: {fileID: 521642901}
+  _windController: {fileID: 2011862027}
+  _voileTransforms:
+  - {fileID: 5147720274644291715}
+  - {fileID: 4493776406632145703}
 --- !u!1001 &529406972
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1511,9 +1531,6 @@ Transform:
   - {fileID: 7964334958097750265}
   - {fileID: 8781716455551298229}
   - {fileID: 2519944968946295042}
-  - {fileID: 2806993269872305988}
-  - {fileID: 134408143581281455}
-  - {fileID: 6075115235203613104}
   - {fileID: 7799507928878998218}
   - {fileID: 4335967241543878004}
   - {fileID: 6523753783362776000}
@@ -1797,7 +1814,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1074494318}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.13608082, y: -1e-45, z: -0, w: 0.99069774}
+  m_LocalRotation: {x: 0.13608082, y: -0, z: -0, w: 0.99069774}
   m_LocalPosition: {x: 0, y: 27, z: -50}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2637,7 +2654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea482422b4e82954a90edb22e32e94a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxWindSpeed: 3
+  maxWindSpeed: 5
   directionChangeRate: 0.001
   linearAngularAcceleration: 0.001
   windAcceleration: 0.01
@@ -2896,12 +2913,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7258104115701468892}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.000000021855694, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.0437775, y: 8.733301, z: 5.421755}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.010208845, y: 5.3271403, z: 1.5558317}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 815064012}
+  m_Father: {fileID: 5147720274644291715}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &140058650246113733
 MeshRenderer:
@@ -3756,7 +3773,6 @@ GameObject:
   - component: {fileID: 2806993269872305988}
   - component: {fileID: 3543665141407122207}
   - component: {fileID: 4028985481109065937}
-  - component: {fileID: 4028985481109065938}
   m_Layer: 0
   m_Name: StylShip_SailFront
   m_TagString: Untagged
@@ -4242,12 +4258,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1897017058487752575}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.000000021855694, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.0377655, y: 7.341043, z: 15.238304}
+  m_LocalRotation: {x: -0, y: 0.00000008742278, z: -3.821371e-15, w: 1}
+  m_LocalPosition: {x: 0.00001614778, y: 1.4114919, z: 0.99364656}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 815064012}
+  m_Father: {fileID: 4493776406632145703}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &3081044220296885624
 MeshRenderer:
@@ -4855,22 +4871,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4028985481109065938
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1897017058487752575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 990980865b140314183e522370632640, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _windForceMultiplier: 10
-  _voileFlatSurface: 0
-  _boatRigidbody: {fileID: 521642901}
-  _windController: {fileID: 2011862027}
 --- !u!1 &4104006814215842471
 GameObject:
   m_ObjectHideFlags: 0
@@ -4982,7 +4982,8 @@ Transform:
   m_LocalPosition: {x: 1.0377502, y: 5.9295516, z: 14.2446575}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2806993269872305988}
   m_Father: {fileID: 815064012}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4635651299779355763
@@ -5022,7 +5023,6 @@ GameObject:
   - component: {fileID: 6075115235203613104}
   - component: {fileID: 7592590968874212530}
   - component: {fileID: 1849529942963960451}
-  - component: {fileID: 7592590968874212531}
   m_Layer: 0
   m_Name: StylShip_SailMid2
   m_TagString: Untagged
@@ -5084,7 +5084,9 @@ Transform:
   m_LocalPosition: {x: 1.0335693, y: 3.4061608, z: 3.865923}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 134408143581281455}
+  - {fileID: 6075115235203613104}
   m_Father: {fileID: 815064012}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &5272609851578280184
@@ -5302,12 +5304,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4738373882232047039}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.000000021855694, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.0377502, y: 21.437267, z: 4.52631}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.0041816235, y: 18.031109, z: 0.66038626}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 815064012}
+  m_Father: {fileID: 5147720274644291715}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6310628969859244104
 MeshFilter:
@@ -5520,7 +5522,6 @@ GameObject:
   - component: {fileID: 134408143581281455}
   - component: {fileID: 9005956197803946467}
   - component: {fileID: 3350697416429916307}
-  - component: {fileID: 9005956197803946468}
   m_Layer: 0
   m_Name: StylShip_SailMid1
   m_TagString: Untagged
@@ -5646,22 +5647,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4738373882232047039}
   m_Mesh: {fileID: -9088030162566041274, guid: 4fe7ec1d555ab494d836addf3c4b2c0f, type: 3}
---- !u!114 &7592590968874212531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4738373882232047039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 990980865b140314183e522370632640, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _windForceMultiplier: 10
-  _voileFlatSurface: 0
-  _boatRigidbody: {fileID: 521642901}
-  _windController: {fileID: 2011862027}
 --- !u!33 &7640131838400168017
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -6313,22 +6298,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7258104115701468892}
   m_Mesh: {fileID: -2415858050768349167, guid: 4fe7ec1d555ab494d836addf3c4b2c0f, type: 3}
---- !u!114 &9005956197803946468
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7258104115701468892}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 990980865b140314183e522370632640, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _windForceMultiplier: 10
-  _voileFlatSurface: 0
-  _boatRigidbody: {fileID: 521642901}
-  _windController: {fileID: 2011862027}
 --- !u!23 &9026236695875626726
 MeshRenderer:
   m_ObjectHideFlags: 0

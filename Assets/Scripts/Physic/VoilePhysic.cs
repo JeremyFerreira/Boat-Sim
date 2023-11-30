@@ -9,6 +9,7 @@ public class VoilePhysic : MonoBehaviour
     [SerializeField] private float _voileFlatSurface;
     [SerializeField] private Rigidbody _boatRigidbody;
     [SerializeField] private WindController _windController;
+    [SerializeField] private Transform[] _voileTransforms;
     private void OnValidate()
     {
         _windController = FindAnyObjectByType<WindController>();
@@ -20,7 +21,7 @@ public class VoilePhysic : MonoBehaviour
     //the amount of surface that will be effective by wind
     float GetVoileSurfaceBasedOnWindDirection()
     {
-        return Mathf.Clamp01(Vector3.Dot(_windController.GetWindDirection(),GetVoileDirection()));
+        return Mathf.Clamp01(Vector3.Dot(_windController.GetWindDirection(),GetVoileDirection())) * _voileFlatSurface;
     }
     float GetForceMultiplierByWindDirection()
     {
@@ -33,6 +34,11 @@ public class VoilePhysic : MonoBehaviour
     private void FixedUpdate()
     {
         _boatRigidbody.AddForce(_boatRigidbody.transform.forward * GetForceByWind(),ForceMode.Acceleration);
-        transform.forward = _windController.GetWindDirection();
+        Vector3 windNormal = Vector3.Cross(_windController.GetWindDirection(), Vector3.up);
+        Vector3 voileForward = Vector3.Cross(transform.up, windNormal);
+        foreach (Transform t in _voileTransforms)
+        {
+            t.transform.rotation = Quaternion.LookRotation(voileForward, transform.up);
+        }
     }
 }
