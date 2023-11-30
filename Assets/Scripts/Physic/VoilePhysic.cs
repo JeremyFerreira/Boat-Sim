@@ -34,6 +34,9 @@ public class VoilePhysic : MonoBehaviour
     private void FixedUpdate()
     {
         _boatRigidbody.AddForce(_boatRigidbody.transform.forward * GetForceByWind(),ForceMode.Acceleration);
+    }
+    private void Update()
+    {
         RotateVoileBasedOnWindDirection();
     }
     void RotateVoileBasedOnWindDirection()
