@@ -13,16 +13,16 @@ public class WindController : MonoBehaviour
     [SerializeField] float randomAccelerationWindSpeed;
     float windAngle;
     Vector3 windDirection;
-    float windSpeed01;
-    float windSpeed;
-    
+    float windForce01;
+    float windForce;
+
     [Header("References")]
+    [SerializeField] WindSO _windData;
     [SerializeField] Transform boat;
-    Transform cameraTransform;
-    [SerializeField] RectTransform windImage;
+    
 
     //Getters
-    public float GetWindSpeed() { return windSpeed; }
+    public float GetWindSpeed() { return windForce; }
     public Vector3 GetWindDirection() 
     {
         if (windDirection != Vector3.zero)
@@ -36,30 +36,23 @@ public class WindController : MonoBehaviour
         }
     }
 
-    void Awake()
-    { 
-        cameraTransform = Camera.main.transform;
-    }
     void Update()
     {
         CalculateWindDirection();
-        UpdtateWindInterface();
         CalculateWindSpeed();
     }
     void CalculateWindDirection()
     {
-        windAngle += linearAngularAcceleration * (Mathf.PerlinNoise(boat.position.y * directionChangeRate, boat.position.z * directionChangeRate) - 0.5f) / 2;
+        windAngle += linearAngularAcceleration * (Mathf.PerlinNoise(boat.position.x * directionChangeRate, boat.position.z * directionChangeRate) - 0.5f) / 2;
+        _windData.WindAngle = windAngle;
         windDirection = MathExtension.RotateVectorOnXZPlane(Vector3.forward, windAngle);
-    }
-    void UpdtateWindInterface()
-    {
-        windImage.eulerAngles = new Vector3(0, 0, windAngle * Mathf.Rad2Deg + cameraTransform.eulerAngles.y);
-        windImage.localScale = Vector3.one*windSpeed01;
+        _windData.WindDirection = windDirection;
     }
     void CalculateWindSpeed()
     {
-        windSpeed01 += windAcceleration * (Mathf.PerlinNoise1D(randomAccelerationWindSpeed * Time.time) - 0.5f) / 2f;
-        windSpeed01 = Mathf.Clamp(windSpeed01, 0.5f, 1);
-        windSpeed = Mathf.Lerp(0, maxWindSpeed, windSpeed01);
+        windForce01 += windAcceleration * (Mathf.PerlinNoise1D(randomAccelerationWindSpeed * Time.time) - 0.5f) / 2f;
+        windForce01 = Mathf.Clamp(windForce01, 0.5f, 1);
+        windForce = Mathf.Lerp(0, maxWindSpeed, windForce01);
+        _windData.WindForce = windForce01;
     }
 }

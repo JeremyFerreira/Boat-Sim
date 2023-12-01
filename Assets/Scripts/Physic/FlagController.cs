@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FlagController : MonoBehaviour
 {
-    [SerializeField] WindController _windController;
+    [SerializeField] WindSO _windData;
     [SerializeField] Transform[] _flagsTransforms;
     // Start is called before the first frame update
     private void Update()
@@ -13,7 +13,7 @@ public class FlagController : MonoBehaviour
     }
     void RotateFlagsBasedOnWindDirection()
     {
-        Vector3 windNormal = Vector3.Cross(_windController.GetWindDirection(), Vector3.up);
+        Vector3 windNormal = Vector3.Cross(_windData.WindDirection, Vector3.up);
         Vector3 voileForward = Vector3.Cross(transform.up, windNormal);
         foreach (Transform t in _flagsTransforms)
         {

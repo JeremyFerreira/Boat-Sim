@@ -33,7 +33,7 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
-  m_LockedProperties: 
+  m_LockedProperties: _Phase
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -98,15 +98,15 @@ Material:
     - _AlphaClip: 0
     - _AlphaToMask: 0
     - _AmbientOcclusion: 0
-    - _Amplitude: 2.8
-    - _Amplitude2: 1.7
+    - _Amplitude: 3.94
+    - _Amplitude2: 1.69
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
-    - _CurrentTime: 42.041283
+    - _CurrentTime: 24.60249
     - _Cutoff: 0.5
     - _DepthPower: 0.07
     - _DetailAlbedoMapScale: 1
@@ -116,7 +116,7 @@ Material:
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
     - _Frequency: 0.055
-    - _Frequency2: 0.034
+    - _Frequency2: 0.16
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
@@ -125,7 +125,7 @@ Material:
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _Phase: 0
-    - _Phase2: 0
+    - _Phase2: 1.04
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
@@ -139,7 +139,7 @@ Material:
     - _ZWrite: 1
     - _noiseScale: 100
     - _speed: 14.36
-    - _speed2: 0.66
+    - _speed2: 2.7
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
@@ -147,4 +147,5 @@ Material:
     - _ColorLow: {r: 0, g: 5.298603, b: 8, a: 0.95686275}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _direction: {r: 0.5, g: 0.5, b: 0, a: 0}
   m_BuildTextureStacks: []
