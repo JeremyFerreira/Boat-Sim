@@ -12,16 +12,16 @@ public class VoilePhysic : MonoBehaviour
     
     float GetForceByWind()
     {
-        return GetVoileSurfaceBasedOnWindDirection() * GetForceMultiplierByWindDirection() * _windData.WindForce;
+        return GetVoileSurfaceBasedOnWindDirection() * GetForceMultiplierByWindDirection() * _windData.WindForce * _boatRigidbody.drag;
     }
     //the amount of surface that will be effective by wind
     float GetVoileSurfaceBasedOnWindDirection()
     {
-        return Mathf.Clamp01(Vector3.Dot(_windData.WindDirection,GetVoileDirection())) * _voileFlatSurface;
+        return Mathf.Clamp((Vector3.Dot(_windData.WindDirection,GetVoileDirection())+1)/2f,0.2f,1) * _voileFlatSurface;
     }
     float GetForceMultiplierByWindDirection()
     {
-        return _windForceMultiplier * (Vector3.Dot(_boatRigidbody.transform.forward, _windData.WindDirection) + 1)/2f;
+        return _windForceMultiplier * /*(Vector3.Dot(_boatRigidbody.transform.forward, _windData.WindDirection) + 1)/2f*/ 1;
     }
     Vector3 GetVoileDirection()
     {

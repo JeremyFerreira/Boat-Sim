@@ -24,12 +24,21 @@ public class GouvernailController : MonoBehaviour
         //normal direction of gouvernail
         Vector3 gouvernailNormal = _gouvernailAngle - 180 > 0 ? _gouvernailTransform.right : -_gouvernailTransform.right;
         float magnitudeForce = Vector3.Dot(transform.forward, gouvernailNormal);
+        //-180 because jumps to 359 degrees to 0 automatically so remap form -180 to 180
         Vector3 forceDirection = _gouvernailAngle - 180 > 0 ? -transform.right : transform.right;
-        _boatRigidbody.AddForceAtPosition(_rotationForce * forceDirection * magnitudeForce, _gouvernailTransform.position);
+        _boatRigidbody.AddForceAtPosition(_rotationForce * forceDirection * magnitudeForce, _gouvernailTransform.position,ForceMode.Acceleration);
     }
     void SetGouvernailAngle(float value)
     {
         _gouvernailAngle = Mathf.Deg2Rad * Mathf.Lerp(-_maxGouvernailAngle, _maxGouvernailAngle, value);
         _gouvernailTransform.transform.rotation = Quaternion.LookRotation(MathExtension.RotateVectorOnXZPlane(transform.forward, _gouvernailAngle), transform.up);
+    }
+    private void OnDrawGizmosSelected()
+    {
+        Vector3 gouvernailNormal = _gouvernailAngle - 180 > 0 ? _gouvernailTransform.right : -_gouvernailTransform.right;
+        float magnitudeForce = Vector3.Dot(transform.forward, gouvernailNormal);
+        //-180 because jumps to 359 degrees to 0 automatically so remap form -180 to 180
+        Vector3 forceDirection = _gouvernailAngle - 180 > 0 ? -transform.right : transform.right;
+        Gizmos.DrawLine(_gouvernailTransform.position, _gouvernailTransform.position + _rotationForce * forceDirection * magnitudeForce);
     }
 }

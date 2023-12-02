@@ -15,6 +15,7 @@ public class FloatingObject : MonoBehaviour
     [SerializeField] private float _airAngularDrag;
     private Rigidbody _objectRigidBody;
     [SerializeField] private float _averageHeight;
+    [SerializeField] private Transform _centerOfmass;
 
     private void OnValidate()
     {
@@ -30,6 +31,7 @@ public class FloatingObject : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        _objectRigidBody.centerOfMass = _centerOfmass.localPosition;
         foreach (Transform floatingPoint in _floatingPoints)
         {
             float heightBetweenPointAndWater = _waterElevation.GetElevation(floatingPoint.transform.position.x, floatingPoint.transform.position.z) - floatingPoint.transform.position.y;
@@ -71,6 +73,8 @@ public class FloatingObject : MonoBehaviour
             Vector3 directionForce = _waterElevation.GetNormal(floatingPoint.transform.position.x, floatingPoint.transform.position.z) * heightBetweenPointAndWater;
             Gizmos.DrawLine(floatingPoint.transform.position, floatingPoint.transform.position + directionForce*5);
         }
+#if UNITY_EDITOR
         Handles.Label(transform.position+Vector3.up,GetRatioMassUnderWater().ToString());
+#endif 
     }
 }
