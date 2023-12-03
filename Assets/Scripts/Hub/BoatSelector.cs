@@ -21,11 +21,7 @@ public class BoatSelector : MonoBehaviour
     }
     public void SwitchCamera(bool next)
     {
-        _currentCameraIndex += next ? 1 : -1;
-        if(_currentCameraIndex == -1)
-        {
-            _currentCameraIndex = _virtualCameras.Length -1;
-        }
+        _currentCameraIndex += next ? 1 : _virtualCameras.Length - 1;
         _currentCameraIndex %= _virtualCameras.Length;
         _currentCamera.gameObject.SetActive(false);
         _currentCamera = _virtualCameras[_currentCameraIndex];
