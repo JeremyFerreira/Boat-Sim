@@ -9,7 +9,10 @@ public class VoilePhysic : MonoBehaviour
     [SerializeField] private Rigidbody _boatRigidbody;
     [SerializeField] private WindSO _windData;
     [SerializeField] private Transform[] _voileTransforms;
-    
+    private float _voileSurfaceMultiplier;
+    public float VoileSurfaceMultiplier { get { return _voileSurfaceMultiplier;} set { _voileSurfaceMultiplier = value;} }
+
+
     float GetForceByWind()
     {
         return GetVoileSurfaceBasedOnWindDirection() * GetForceMultiplierByWindDirection() * _windData.WindForce * _boatRigidbody.drag;
@@ -17,7 +20,7 @@ public class VoilePhysic : MonoBehaviour
     //the amount of surface that will be effective by wind
     float GetVoileSurfaceBasedOnWindDirection()
     {
-        return Mathf.Clamp((Vector3.Dot(_windData.WindDirection,GetVoileDirection())+1)/2f,0.2f,1) * _voileFlatSurface;
+        return Mathf.Clamp((Vector3.Dot(_windData.WindDirection,GetVoileDirection())+1)/2f,0.2f,1) * _voileFlatSurface * _voileSurfaceMultiplier;
     }
     float GetForceMultiplierByWindDirection()
     {

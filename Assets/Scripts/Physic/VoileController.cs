@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 
 public class VoileController : MonoBehaviour
 {
@@ -11,6 +12,28 @@ public class VoileController : MonoBehaviour
     [SerializeField] private float _voileAngle;
     [SerializeField] private Transform[] _voileTransforms;
     [SerializeField] private Toggle _voileAutoToggle;
+    [SerializeField] private Slider _voileOpenSlider;
+    [SerializeField] private Animator _voileAnimator;
+    [SerializeField] private VoilePhysic _voilePhysic;
+    private void OnEnable()
+    {
+        _voileOpenSlider.onValueChanged.AddListener(OpenVoile);
+    }
+    private void OnDisable()
+    {
+        _voileOpenSlider.onValueChanged.RemoveListener(OpenVoile);
+    }
+    void Start()
+    {
+        _voileAnimator = GetComponent<Animator>();
+        OpenVoile(0f);
+    }
+    [EasyButtons.Button]
+    public void OpenVoile(float value)
+    {
+        _voileAnimator.Play("VoileOpen", 0, value);
+        _voilePhysic.VoileSurfaceMultiplier = value;
+    }
     private void Update()
     {
         if(_voileAutoToggle.isOn)
