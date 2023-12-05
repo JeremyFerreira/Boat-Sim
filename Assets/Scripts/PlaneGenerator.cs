@@ -9,6 +9,7 @@ public class PlaneGenerator : MonoBehaviour
     {
         MeshFilter meshFilter = GetComponent<MeshFilter>();
         Mesh mesh = new Mesh();
+        mesh.name = "PlaneCustom";
 
         // Generate vertices and UVs
         Vector3[] vertices = new Vector3[verticesPerSide * verticesPerSide];
