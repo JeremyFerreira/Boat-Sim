@@ -43,7 +43,8 @@ public class FloatingObject : MonoBehaviour
         //calculate Drag
         float ratioMassUnderwater = GetRatioMassUnderWater();
         float ratioMassInAir = 1-ratioMassUnderwater;
-        _objectRigidBody.drag = ratioMassUnderwater * _waterLinearDrag + ratioMassInAir * _airLinearDrag;
+        float verticalDrag = Mathf.Lerp(_waterLinearDrag,_airLinearDrag, ratioMassInAir);
+        _objectRigidBody.velocity = new Vector3(_objectRigidBody.velocity.x, _objectRigidBody.velocity.y * verticalDrag, _objectRigidBody.velocity.z);
         _objectRigidBody.angularDrag =  ratioMassUnderwater * _waterAngularDrag + ratioMassInAir * _airAngularDrag;
     }
 
