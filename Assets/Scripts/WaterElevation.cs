@@ -41,7 +41,7 @@ public class WaterElevation : MonoBehaviour
     }
     public float GetElevation(float xPos, float zPos)
     {
-        float height = _amplitude * Mathf.Sin((Time.time * _speed + xPos) * _frequency + _phase)+_amplitude2* Mathf.Cos((Time.time * _speed2 + zPos) * _frequency2 + _phase2);
+        float height = _amplitude * Mathf.Sin((Time.time * _speed + xPos) * _frequency + _phase)+_amplitude2* Mathf.Sin((Time.time * _speed2 + zPos) * _frequency2 + _phase2);
         return height;
     }
     //need to calculate second wave

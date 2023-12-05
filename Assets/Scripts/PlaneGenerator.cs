@@ -10,24 +10,30 @@ public class PlaneGenerator : MonoBehaviour
         MeshFilter meshFilter = GetComponent<MeshFilter>();
         Mesh mesh = new Mesh();
 
-        // Generate vertices
+        // Generate vertices and UVs
         Vector3[] vertices = new Vector3[verticesPerSide * verticesPerSide];
+        Vector2[] uvs = new Vector2[verticesPerSide * verticesPerSide];
+
         for (int i = 0; i < verticesPerSide; i++)
         {
             for (int j = 0; j < verticesPerSide; j++)
             {
                 float x = (float)j / (verticesPerSide - 1);
                 float z = (float)i / (verticesPerSide - 1);
+
                 vertices[i * verticesPerSide + j] = new Vector3(x, 0, z);
+                uvs[i * verticesPerSide + j] = new Vector2(x, z);
             }
         }
 
-        // Assign vertices to the mesh
+        // Assign vertices and UVs to the mesh
         mesh.vertices = vertices;
+        mesh.uv = uvs;
 
         // Generate triangles
         int[] triangles = new int[(verticesPerSide - 1) * (verticesPerSide - 1) * 6];
         int index = 0;
+
         for (int i = 0; i < verticesPerSide - 1; i++)
         {
             for (int j = 0; j < verticesPerSide - 1; j++)
@@ -49,6 +55,10 @@ public class PlaneGenerator : MonoBehaviour
 
         // Assign triangles to the mesh
         mesh.triangles = triangles;
+
+        // Recalculate normals and tangents
+        mesh.RecalculateNormals();
+        mesh.RecalculateTangents();
 
         // Assign the generated mesh to the MeshFilter component
         meshFilter.mesh = mesh;
