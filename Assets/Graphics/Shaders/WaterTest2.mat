@@ -56,11 +56,11 @@ Material:
     m_Ints: []
     m_Floats:
     - _AmbientOcclusion: 1
-    - _Amplitude: 1.3
-    - _Amplitude2: 2
+    - _Amplitude: 4
+    - _Amplitude2: 4
     - _DepthPower: 1.52
     - _Distance: 36.6
-    - _Frequency: 0.06
+    - _Frequency: 0.03
     - _Frequency2: 0.06
     - _Mettalic: 0
     - _Phase: 0

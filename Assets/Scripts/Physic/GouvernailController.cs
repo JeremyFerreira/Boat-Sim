@@ -29,7 +29,7 @@ public class GouvernailController : MonoBehaviour
         Vector3 forceDirection = _gouvernailAngle - 180 > 0 ? -transform.right : transform.right;
         //_boatRigidbody.AddForceAtPosition(_rotationForce * forceDirection * magnitudeForce, _gouvernailTransform.position,ForceMode.Acceleration);
         _boatRigidbody.AddTorque(transform.up * _rotationForce * -1 * magnitudeForce);
-        _boatRigidbody.drag = 0.3f + (1-Vector3.Dot(_boatRigidbody.velocity.normalized, transform.forward))*_dragScale;
+        //_boatRigidbody.drag = 0.3f + (1-Vector3.Dot(_boatRigidbody.velocity.normalized, transform.forward))*_dragScale;
     }
     void SetGouvernailAngle(float value)
     {

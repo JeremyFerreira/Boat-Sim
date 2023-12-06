@@ -2405,8 +2405,8 @@ MonoBehaviour:
   _floatingForce: 30
   _waterLinearDrag: 0.95
   _airLinearDrag: 0.999
-  _waterAngularDrag: 4
-  _airAngularDrag: 2
+  _waterAngularDrag: 2
+  _airAngularDrag: 0.5
   _averageHeight: 10
   _centerOfmass: {fileID: 4617435167934206270}
 --- !u!114 &2051973846080846912
@@ -2436,9 +2436,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _boatRigidbody: {fileID: 5343496487147292752}
   _maxGouvernailAngle: 40
-  _rotationForce: 6
+  _rotationForce: 100
   _gouvernailTransform: {fileID: 1759112517556635555}
   _sliderGouvernail: {fileID: 0}
+  _dragScale: 0
 --- !u!114 &3020117694122433547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2451,7 +2452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 990980865b140314183e522370632640, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _windForceMultiplier: 4
+  _windForceMultiplier: 2
   _voileFlatSurface: 10
   _boatRigidbody: {fileID: 5343496487147292752}
   _windData: {fileID: 11400000, guid: 16cc1a3497870bf46938bde6252f0e8b, type: 2}
