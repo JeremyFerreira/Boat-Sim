@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WaterElevation : MonoBehaviour
 {
+    private float _gravity;
     private float _amplitude;
     private float _frequency;
     private float _phase;
@@ -41,6 +42,9 @@ public class WaterElevation : MonoBehaviour
     }
     public float GetElevation(float xPos, float zPos)
     {
+        //float theta = Theta(new Vector3(xPos,0,zPos),Time.time,
+
+
         float height = _amplitude * Mathf.Sin((Time.time * _speed + xPos) * _frequency + _phase)+_amplitude2* Mathf.Sin((Time.time * _speed2 + zPos) * _frequency2 + _phase2);
         return height;
     }
@@ -55,6 +59,15 @@ public class WaterElevation : MonoBehaviour
         Vector3 normal = new Vector3(-df_dx, 1.0f, -df_dz);
 
         return normal;
+    }
+    private float Theta(Vector3 position, float phase, float time, float gravity, float depth, float amplitude, Vector3 direction)
+    {
+        return phase - ((direction.x * position.x + direction.z * position.z) - Frequency(gravity, depth, direction) * time);
+    }
+    private float Frequency(float gravity, float depth, Vector3 direction)
+    {
+        float directionLength = direction.magnitude;
+        return Mathf.Sqrt(MathExtension.HyperbolicTangent(directionLength*depth) * gravity * directionLength);
     }
     private void OnDrawGizmos()
     {

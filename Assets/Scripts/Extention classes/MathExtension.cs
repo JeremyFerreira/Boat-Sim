@@ -38,4 +38,8 @@ public static class MathExtension
         Vector3 direction = (destinationPoint - point).normalized;
         return destinationPoint - direction * distance;
     }
+    public static float HyperbolicTangent(float x)
+    {
+        return (Mathf.Exp(x)-Mathf.Exp(-x))/(Mathf.Exp(x) + Mathf.Exp(-x));
+    }
 }
