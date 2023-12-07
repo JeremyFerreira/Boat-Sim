@@ -131,14 +131,14 @@ public class InputManager : MonoBehaviour
     public void SetDebugInput()
     {
         //cheatMenu
-        _input.Debug.CheatMenu.performed += ctx => _cheatMenu.ChangeValue(true);
-        _input.Debug.CheatMenu.canceled += ctx => _cheatMenu.ChangeValue(false);
+        _input.Debug.CheatMenu.performed += ctx => _cheatMenu.ChangeValue(!_cheatMenu.value);
+     //   _input.Debug.CheatMenu.canceled += ctx => _cheatMenu.ChangeValue(false);
     }
     public void UnSetDebugInput()
     {
         //cheatMenu
-        _input.Debug.CheatMenu.performed += ctx => _cheatMenu.ChangeValue(true);
-        _input.Debug.CheatMenu.canceled += ctx => _cheatMenu.ChangeValue(false);
+        _input.Debug.CheatMenu.performed += ctx => _cheatMenu.ChangeValue(!_cheatMenu.value);
+     //   _input.Debug.CheatMenu.canceled += ctx => _cheatMenu.ChangeValue(false);
     }
     #endregion
 

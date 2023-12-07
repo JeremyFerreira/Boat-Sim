@@ -7,7 +7,7 @@ using UnityEngine;
         public event Action<T> OnValueChanged;
         [SerializeField] bool isActive = true;
         public bool IsActive { get { return isActive; } set { if (!value) { ChangeValue(default); } isActive = value; } }
-        public void ChangeValue(T value)
+        public virtual void ChangeValue(T value)
         {
             if(isActive)
             {

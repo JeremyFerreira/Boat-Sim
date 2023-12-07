@@ -6,4 +6,10 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Data/InputData/button")]
 public class InputButtonScriptableObject : InputScriptableObject<bool>
 {
+    public bool value;
+    public override void ChangeValue (bool newValue)
+    {
+        value = newValue;
+        base.ChangeValue (newValue);
+    }
 }
