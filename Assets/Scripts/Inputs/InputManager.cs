@@ -9,11 +9,15 @@ public class InputManager : MonoBehaviour
 {
     public static InputManager Instance;
     public static PlayerControls _input { private set; get; }
+
     [Header("Game")]
-    [SerializeField] private InputButtonScriptableObject _shoot;
-    [SerializeField] private InputVectorScriptableObject _move;
-    [SerializeField] private InputVectorScriptableObject _look;
+    [SerializeField] private InputFloatScriptableObject _moveSalling;
+    [SerializeField] private InputFloatScriptableObject _openingSalling;
+    [SerializeField] private InputFloatScriptableObject _moveRudder;
     [SerializeField] private InputButtonScriptableObject _pause;
+
+    [Space]
+    [Header("Debug")]
     [SerializeField] private InputButtonScriptableObject _cheatMenu;
 
     private bool _isGamepad { get; set; }
@@ -34,91 +38,114 @@ public class InputManager : MonoBehaviour
 
     private void OnEnable()
     {
-        EnableGameInput();
-        _input.UI.Enable();
+#if(UNITY_EDITOR)
+        SetDebugInput();
+        ActiveDebugInput();
+#endif
+        ActiveGameInputs();
+        SetGameInput();
     }
     private void OnDisable()
     {
-        _input.UI.Disable();
-        DisableGameInput();
+#if (UNITY_EDITOR)
+        UnSetDebugInput();
+#endif
+        UnSetGameInput();
     }
-    public void ActiveGameInputs(bool value)
-    {
-        _shoot.IsActive = value;
-        _move.IsActive = value;
-        _look.IsActive = value;
 
+    #region FUNCTIONS: ACTIVE INPUTS
+    public void ActiveGameInputs(bool value = true)
+    {
         if (value)
         {
-            _input.UI.Disable();
+            _input.Game.Enable();
         }
         else
         {
-            _input.UI.Enable();
+            _input.Game.Disable();
         }
     }
-    public void EnableGameInput()
+    public void ActiveUIInput(bool value = true)
     {
-        _input.Game.Enable();
+        if (value)
+        {
+            _input.UI.Enable();
+        }
+        else
+        {
+            _input.UI.Disable();
+        }
+    }
+    public void ActiveDebugInput(bool value = true)
+    {
+        if (value)
+        {
+            _input.Debug.Enable();
+        }
+        else
+        {
+            _input.Debug.Disable();
+        }
+    }
+    #endregion
 
-        //Move
-        _input.Game.Move.performed += ctx => _move.ChangeValue(_input.Game.Move.ReadValue<Vector2>());
-        _input.Game.Move.canceled += ctx => _move.ChangeValue(Vector2.zero);
-        //Shoot
-        _input.Game.Shoot.performed += ctx => _shoot.ChangeValue(true);
-        _input.Game.Shoot.canceled += ctx => _shoot.ChangeValue(false);
-        //Rotate
-        _look.IsActive = true;
-        _input.Game.Rotate.performed += ctx => _look.ChangeValue(_input.Game.Rotate.ReadValue<Vector2>());
-        //Pause
+    #region FUNCTIONS: SET/UNSET INPUTS
+    public void SetGameInput()
+    {
+        Debug.Log(_moveRudder);
+        //MoveSailing
+        _input.Game.MoveSailing.performed += ctx => _moveSalling.ChangeValue(_input.Game.MoveSailing.ReadValue<float>());
+        _input.Game.MoveSailing.canceled += ctx => _moveSalling.ChangeValue(0);
+
+        //OpeningSailing
+        _input.Game.OpeningSailing.performed += ctx => _openingSalling.ChangeValue(_input.Game.OpeningSailing.ReadValue<float>());
+        _input.Game.OpeningSailing.canceled += ctx => _openingSalling.ChangeValue(0);
+
+        //MoveRudder
+        _input.Game.MoveRudder.performed += ctx =>  _moveRudder.ChangeValue(_input.Game.MoveRudder.ReadValue<float>());
+        _input.Game.MoveRudder.canceled += ctx => _moveRudder.ChangeValue(0);
+
+        //Pause  
         _input.Game.Pause.performed += ctx => _pause.ChangeValue(true);
         _input.Game.Pause.canceled += ctx => _pause.ChangeValue(false);
-        //cheatMenu
-        _input.Game.CheatMenu.performed += ctx => _cheatMenu.ChangeValue(true);
-        _input.Game.CheatMenu.canceled += ctx => _cheatMenu.ChangeValue(false);
-
     }
-    public void DisableGameInput()
+    public void UnSetGameInput()
     {
-        //Move
-        _input.Game.Move.performed -= ctx => _move.ChangeValue(_input.Game.Move.ReadValue<Vector2>());
-        _input.Game.Move.canceled -= ctx => _move.ChangeValue(Vector2.zero);
-        //Shoot
-        _input.Game.Shoot.performed -= ctx => _shoot.ChangeValue(true);
-        _input.Game.Shoot.canceled -= ctx => _shoot.ChangeValue(false);
-        //Rotate
-        _look.IsActive = false;
-        _input.Game.Rotate.performed -= ctx => _look.ChangeValue(_input.Game.Rotate.ReadValue<Vector2>());
+        //MoveSailing
+        _input.Game.MoveSailing.performed -= ctx => _moveSalling.ChangeValue(_input.Game.MoveSailing.ReadValue<float>());
+        _input.Game.MoveSailing.canceled -= ctx => _moveSalling.ChangeValue(0);
+
+        //OpeningSailing
+        _input.Game.OpeningSailing.performed -= ctx => _openingSalling.ChangeValue(_input.Game.OpeningSailing.ReadValue<float>());
+        _input.Game.OpeningSailing.canceled -= ctx => _openingSalling.ChangeValue(0);
+
+        //MoveRudder
+        _input.Game.MoveRudder.performed -= ctx => _moveRudder.ChangeValue(_input.Game.OpeningSailing.ReadValue<float>());
+        _input.Game.MoveRudder.canceled -= ctx => _moveRudder.ChangeValue(0);
+
         //Pause
         _input.Game.Pause.performed -= ctx => _pause.ChangeValue(true);
         _input.Game.Pause.canceled -= ctx => _pause.ChangeValue(false);
-        //cheatMenu
-        _input.Game.CheatMenu.performed -= ctx => _cheatMenu.ChangeValue(true);
-        _input.Game.CheatMenu.canceled -= ctx => _cheatMenu.ChangeValue(false);
+    }
 
-        _input.Game.Disable();
-    }
-    public void EnableUIInput(bool value)
+    public void SetDebugInput()
     {
-        if (value)
-        {
-            _input.UI.Enable();
-        }
-        else
-        {
-            _input.UI.Disable();
-        }
+        //cheatMenu
+        _input.Debug.CheatMenu.performed += ctx => _cheatMenu.ChangeValue(true);
+        _input.Debug.CheatMenu.canceled += ctx => _cheatMenu.ChangeValue(false);
     }
+    public void UnSetDebugInput()
+    {
+        //cheatMenu
+        _input.Debug.CheatMenu.performed += ctx => _cheatMenu.ChangeValue(true);
+        _input.Debug.CheatMenu.canceled += ctx => _cheatMenu.ChangeValue(false);
+    }
+    #endregion
+
     private void Update()
     {
         //find the last Input Device used and set a bool.
         _isGamepad = IsGamepad();
-
-
-        if (_look.IsActive && !_isGamepad)
-        {
-            _look.ChangeValue(Mouse.current.position.ReadValue());
-        }
     }
 
     public static bool IsGamepad()

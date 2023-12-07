@@ -28,24 +28,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             ""id"": ""0bc7f802-d7aa-4161-8946-72277659088d"",
             ""actions"": [
                 {
-                    ""name"": ""Move"",
-                    ""type"": ""Value"",
-                    ""id"": ""9a0f5cce-423f-4b39-9fce-a28caf065e80"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Shoot"",
-                    ""type"": ""Button"",
-                    ""id"": ""e64cf616-f127-4c75-bc6b-356247e2991a"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Pause"",
                     ""type"": ""Button"",
                     ""id"": ""75718126-105b-4719-982e-30f9d60055c0"",
@@ -55,113 +37,34 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Rotate"",
+                    ""name"": ""Move Sailing"",
                     ""type"": ""Value"",
-                    ""id"": ""f481fe27-89cb-486b-b804-fd91c1fadceb"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""id"": ""bc115194-dc88-4a88-9f96-74df94ef84da"",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""CheatMenu"",
-                    ""type"": ""Button"",
-                    ""id"": ""05d002f9-bd5f-4f48-8f24-0fc95ae26e89"",
-                    ""expectedControlType"": ""Button"",
+                    ""name"": ""OpeningSailing"",
+                    ""type"": ""Value"",
+                    ""id"": ""174c5140-c6cb-4ed3-b7b8-6da5fdc04bd3"",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""MoveRudder"",
+                    ""type"": ""Value"",
+                    ""id"": ""363d2a60-8afa-4bd4-9f55-badf4efcb8ed"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
-                {
-                    ""name"": ""2D Vector"",
-                    ""id"": ""09a1f820-7d56-4190-b181-99433d064b59"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""1e0adf52-8bc9-490f-aa02-308ff20fe10b"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""74706917-3d17-4058-bea7-351892786175"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""92e3799c-906b-4ee6-9f92-1c53e062ad16"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""a1b1884e-26f3-46eb-8e5b-cb96b10751f8"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""05a1675a-f25c-4570-837d-425c56006108"",
-                    ""path"": ""<Gamepad>/leftStick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""6b033216-a21e-4dc7-9f50-b3e2038a454f"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Shoot"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""5b0261d4-1d24-43c2-a895-0d3f5e8810c5"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Shoot"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
                 {
                     ""name"": """",
                     ""id"": ""bcd86ea6-bdbf-463a-ac53-78c5e2af5082"",
@@ -174,26 +77,103 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""e135a2f6-22a0-471e-aa87-b2eaf1e0e446"",
-                    ""path"": ""<Gamepad>/rightStick"",
+                    ""name"": ""1D Axis"",
+                    ""id"": ""f404b1fd-c3d7-4f6c-a320-6032fbbfb3e0"",
+                    ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Rotate"",
-                    ""isComposite"": false,
+                    ""action"": ""Move Sailing"",
+                    ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""d01d3527-133b-48d4-b5c9-382f857e094c"",
-                    ""path"": ""<Keyboard>/p"",
+                    ""name"": ""negative"",
+                    ""id"": ""9e504a1a-1a9e-4f05-ad5b-bff6f92fdcbd"",
+                    ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""CheatMenu"",
+                    ""action"": ""Move Sailing"",
                     ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""62bb8fe6-c6b8-41cf-ba50-ccd88130da2c"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move Sailing"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""9bb6dfcd-66f0-4670-82cd-50935e84d98b"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpeningSailing"",
+                    ""isComposite"": true,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""918a0f9b-a96e-432d-9cb4-44cadb2052bc"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpeningSailing"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""c2c88129-f037-44fa-9be3-2b4884bc15c6"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpeningSailing"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""e7b59f05-e93a-4680-90e0-4545cba4c68e"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveRudder"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""c0aa7fb8-28ad-4c1e-ad6a-6c332155bb71"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveRudder"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""dff9bfbf-e8bf-4362-a2c7-ae6108be392e"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveRudder"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         },
@@ -840,6 +820,34 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Debug"",
+            ""id"": ""9f2a0839-0f50-4cd7-a2f4-57b8f184b8cf"",
+            ""actions"": [
+                {
+                    ""name"": ""CheatMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""f4744ceb-b0f2-4c84-bc38-13770f09570f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""9eda9c0c-52c9-4dd0-b8c0-cf3cce0238da"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CheatMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -858,11 +866,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
 }");
         // Game
         m_Game = asset.FindActionMap("Game", throwIfNotFound: true);
-        m_Game_Move = m_Game.FindAction("Move", throwIfNotFound: true);
-        m_Game_Shoot = m_Game.FindAction("Shoot", throwIfNotFound: true);
         m_Game_Pause = m_Game.FindAction("Pause", throwIfNotFound: true);
-        m_Game_Rotate = m_Game.FindAction("Rotate", throwIfNotFound: true);
-        m_Game_CheatMenu = m_Game.FindAction("CheatMenu", throwIfNotFound: true);
+        m_Game_MoveSailing = m_Game.FindAction("Move Sailing", throwIfNotFound: true);
+        m_Game_OpeningSailing = m_Game.FindAction("OpeningSailing", throwIfNotFound: true);
+        m_Game_MoveRudder = m_Game.FindAction("MoveRudder", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_AnyKey = m_UI.FindAction("AnyKey", throwIfNotFound: true);
@@ -877,6 +884,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
+        // Debug
+        m_Debug = asset.FindActionMap("Debug", throwIfNotFound: true);
+        m_Debug_CheatMenu = m_Debug.FindAction("CheatMenu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -938,20 +948,18 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     // Game
     private readonly InputActionMap m_Game;
     private List<IGameActions> m_GameActionsCallbackInterfaces = new List<IGameActions>();
-    private readonly InputAction m_Game_Move;
-    private readonly InputAction m_Game_Shoot;
     private readonly InputAction m_Game_Pause;
-    private readonly InputAction m_Game_Rotate;
-    private readonly InputAction m_Game_CheatMenu;
+    private readonly InputAction m_Game_MoveSailing;
+    private readonly InputAction m_Game_OpeningSailing;
+    private readonly InputAction m_Game_MoveRudder;
     public struct GameActions
     {
         private @PlayerControls m_Wrapper;
         public GameActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Move => m_Wrapper.m_Game_Move;
-        public InputAction @Shoot => m_Wrapper.m_Game_Shoot;
         public InputAction @Pause => m_Wrapper.m_Game_Pause;
-        public InputAction @Rotate => m_Wrapper.m_Game_Rotate;
-        public InputAction @CheatMenu => m_Wrapper.m_Game_CheatMenu;
+        public InputAction @MoveSailing => m_Wrapper.m_Game_MoveSailing;
+        public InputAction @OpeningSailing => m_Wrapper.m_Game_OpeningSailing;
+        public InputAction @MoveRudder => m_Wrapper.m_Game_MoveRudder;
         public InputActionMap Get() { return m_Wrapper.m_Game; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -961,40 +969,34 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_GameActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_GameActionsCallbackInterfaces.Add(instance);
-            @Move.started += instance.OnMove;
-            @Move.performed += instance.OnMove;
-            @Move.canceled += instance.OnMove;
-            @Shoot.started += instance.OnShoot;
-            @Shoot.performed += instance.OnShoot;
-            @Shoot.canceled += instance.OnShoot;
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
-            @Rotate.started += instance.OnRotate;
-            @Rotate.performed += instance.OnRotate;
-            @Rotate.canceled += instance.OnRotate;
-            @CheatMenu.started += instance.OnCheatMenu;
-            @CheatMenu.performed += instance.OnCheatMenu;
-            @CheatMenu.canceled += instance.OnCheatMenu;
+            @MoveSailing.started += instance.OnMoveSailing;
+            @MoveSailing.performed += instance.OnMoveSailing;
+            @MoveSailing.canceled += instance.OnMoveSailing;
+            @OpeningSailing.started += instance.OnOpeningSailing;
+            @OpeningSailing.performed += instance.OnOpeningSailing;
+            @OpeningSailing.canceled += instance.OnOpeningSailing;
+            @MoveRudder.started += instance.OnMoveRudder;
+            @MoveRudder.performed += instance.OnMoveRudder;
+            @MoveRudder.canceled += instance.OnMoveRudder;
         }
 
         private void UnregisterCallbacks(IGameActions instance)
         {
-            @Move.started -= instance.OnMove;
-            @Move.performed -= instance.OnMove;
-            @Move.canceled -= instance.OnMove;
-            @Shoot.started -= instance.OnShoot;
-            @Shoot.performed -= instance.OnShoot;
-            @Shoot.canceled -= instance.OnShoot;
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
-            @Rotate.started -= instance.OnRotate;
-            @Rotate.performed -= instance.OnRotate;
-            @Rotate.canceled -= instance.OnRotate;
-            @CheatMenu.started -= instance.OnCheatMenu;
-            @CheatMenu.performed -= instance.OnCheatMenu;
-            @CheatMenu.canceled -= instance.OnCheatMenu;
+            @MoveSailing.started -= instance.OnMoveSailing;
+            @MoveSailing.performed -= instance.OnMoveSailing;
+            @MoveSailing.canceled -= instance.OnMoveSailing;
+            @OpeningSailing.started -= instance.OnOpeningSailing;
+            @OpeningSailing.performed -= instance.OnOpeningSailing;
+            @OpeningSailing.canceled -= instance.OnOpeningSailing;
+            @MoveRudder.started -= instance.OnMoveRudder;
+            @MoveRudder.performed -= instance.OnMoveRudder;
+            @MoveRudder.canceled -= instance.OnMoveRudder;
         }
 
         public void RemoveCallbacks(IGameActions instance)
@@ -1146,6 +1148,52 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         }
     }
     public UIActions @UI => new UIActions(this);
+
+    // Debug
+    private readonly InputActionMap m_Debug;
+    private List<IDebugActions> m_DebugActionsCallbackInterfaces = new List<IDebugActions>();
+    private readonly InputAction m_Debug_CheatMenu;
+    public struct DebugActions
+    {
+        private @PlayerControls m_Wrapper;
+        public DebugActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @CheatMenu => m_Wrapper.m_Debug_CheatMenu;
+        public InputActionMap Get() { return m_Wrapper.m_Debug; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(DebugActions set) { return set.Get(); }
+        public void AddCallbacks(IDebugActions instance)
+        {
+            if (instance == null || m_Wrapper.m_DebugActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_DebugActionsCallbackInterfaces.Add(instance);
+            @CheatMenu.started += instance.OnCheatMenu;
+            @CheatMenu.performed += instance.OnCheatMenu;
+            @CheatMenu.canceled += instance.OnCheatMenu;
+        }
+
+        private void UnregisterCallbacks(IDebugActions instance)
+        {
+            @CheatMenu.started -= instance.OnCheatMenu;
+            @CheatMenu.performed -= instance.OnCheatMenu;
+            @CheatMenu.canceled -= instance.OnCheatMenu;
+        }
+
+        public void RemoveCallbacks(IDebugActions instance)
+        {
+            if (m_Wrapper.m_DebugActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IDebugActions instance)
+        {
+            foreach (var item in m_Wrapper.m_DebugActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_DebugActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public DebugActions @Debug => new DebugActions(this);
     private int m_GamePadSchemeIndex = -1;
     public InputControlScheme GamePadScheme
     {
@@ -1157,11 +1205,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     }
     public interface IGameActions
     {
-        void OnMove(InputAction.CallbackContext context);
-        void OnShoot(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
-        void OnRotate(InputAction.CallbackContext context);
-        void OnCheatMenu(InputAction.CallbackContext context);
+        void OnMoveSailing(InputAction.CallbackContext context);
+        void OnOpeningSailing(InputAction.CallbackContext context);
+        void OnMoveRudder(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
@@ -1177,5 +1224,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnRightClick(InputAction.CallbackContext context);
         void OnTrackedDevicePosition(InputAction.CallbackContext context);
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
+    }
+    public interface IDebugActions
+    {
+        void OnCheatMenu(InputAction.CallbackContext context);
     }
 }

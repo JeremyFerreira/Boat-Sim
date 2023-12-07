@@ -15,13 +15,30 @@ public class VoileController : MonoBehaviour
     [SerializeField] private Slider _voileOpenSlider;
     [SerializeField] private Animator _voileAnimator;
     [SerializeField] private VoilePhysic _voilePhysic;
+
+    [SerializeField]
+    private MoveBoatElement _moveSallingElement;
+    [SerializeField]
+    private MoveBoatElement _rotateSallingElement;
     private void OnEnable()
     {
         _voileOpenSlider.onValueChanged.AddListener(OpenVoile);
+        _voileAngleSlider.onValueChanged.AddListener(RotateVoileBasedOnInput01);
+
+        _moveSallingElement.OnEnableFunc();
+        _rotateSallingElement.OnEnableFunc();
+        _moveSallingElement._eventMoveElement += OpenVoile;
+        _rotateSallingElement._eventMoveElement += RotateVoileBasedOnInput01;
     }
     private void OnDisable()
     {
         _voileOpenSlider.onValueChanged.RemoveListener(OpenVoile);
+        _voileAngleSlider.onValueChanged.RemoveListener(RotateVoileBasedOnInput01);
+
+        _moveSallingElement.OnDisableFunc();
+        _rotateSallingElement.OnDisableFunc();
+        _moveSallingElement._eventMoveElement -= OpenVoile;
+        _rotateSallingElement._eventMoveElement -= RotateVoileBasedOnInput01;
     }
     void Start()
     {
@@ -42,8 +59,9 @@ public class VoileController : MonoBehaviour
         }
         else
         {
-            RotateVoileBasedOnInput01(_voileAngleSlider.value);
+            _rotateSallingElement.UpdateFunc();
         }
+        _moveSallingElement.UpdateFunc();
     }
     void RotateVoileBasedOnWindDirection()
     {

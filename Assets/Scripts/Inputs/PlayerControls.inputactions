@@ -6,24 +6,6 @@
             "id": "0bc7f802-d7aa-4161-8946-72277659088d",
             "actions": [
                 {
-                    "name": "Move",
-                    "type": "Value",
-                    "id": "9a0f5cce-423f-4b39-9fce-a28caf065e80",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "Shoot",
-                    "type": "Button",
-                    "id": "e64cf616-f127-4c75-bc6b-356247e2991a",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Pause",
                     "type": "Button",
                     "id": "75718126-105b-4719-982e-30f9d60055c0",
@@ -33,113 +15,34 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Rotate",
+                    "name": "Move Sailing",
                     "type": "Value",
-                    "id": "f481fe27-89cb-486b-b804-fd91c1fadceb",
-                    "expectedControlType": "Vector2",
+                    "id": "bc115194-dc88-4a88-9f96-74df94ef84da",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
                 },
                 {
-                    "name": "CheatMenu",
-                    "type": "Button",
-                    "id": "05d002f9-bd5f-4f48-8f24-0fc95ae26e89",
-                    "expectedControlType": "Button",
+                    "name": "OpeningSailing",
+                    "type": "Value",
+                    "id": "174c5140-c6cb-4ed3-b7b8-6da5fdc04bd3",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "MoveRudder",
+                    "type": "Value",
+                    "id": "363d2a60-8afa-4bd4-9f55-badf4efcb8ed",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
-                {
-                    "name": "2D Vector",
-                    "id": "09a1f820-7d56-4190-b181-99433d064b59",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "1e0adf52-8bc9-490f-aa02-308ff20fe10b",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "74706917-3d17-4058-bea7-351892786175",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "92e3799c-906b-4ee6-9f92-1c53e062ad16",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "a1b1884e-26f3-46eb-8e5b-cb96b10751f8",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "05a1675a-f25c-4570-837d-425c56006108",
-                    "path": "<Gamepad>/leftStick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "6b033216-a21e-4dc7-9f50-b3e2038a454f",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Shoot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5b0261d4-1d24-43c2-a895-0d3f5e8810c5",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Shoot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "",
                     "id": "bcd86ea6-bdbf-463a-ac53-78c5e2af5082",
@@ -152,26 +55,103 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "e135a2f6-22a0-471e-aa87-b2eaf1e0e446",
-                    "path": "<Gamepad>/rightStick",
+                    "name": "1D Axis",
+                    "id": "f404b1fd-c3d7-4f6c-a320-6032fbbfb3e0",
+                    "path": "1DAxis",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Rotate",
-                    "isComposite": false,
+                    "action": "Move Sailing",
+                    "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "d01d3527-133b-48d4-b5c9-382f857e094c",
-                    "path": "<Keyboard>/p",
+                    "name": "negative",
+                    "id": "9e504a1a-1a9e-4f05-ad5b-bff6f92fdcbd",
+                    "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "CheatMenu",
+                    "action": "Move Sailing",
                     "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "62bb8fe6-c6b8-41cf-ba50-ccd88130da2c",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move Sailing",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "9bb6dfcd-66f0-4670-82cd-50935e84d98b",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpeningSailing",
+                    "isComposite": true,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "918a0f9b-a96e-432d-9cb4-44cadb2052bc",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpeningSailing",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "c2c88129-f037-44fa-9be3-2b4884bc15c6",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpeningSailing",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "e7b59f05-e93a-4680-90e0-4545cba4c68e",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveRudder",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "c0aa7fb8-28ad-4c1e-ad6a-6c332155bb71",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveRudder",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "dff9bfbf-e8bf-4362-a2c7-ae6108be392e",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveRudder",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         },
@@ -814,6 +794,34 @@
                     "processors": "",
                     "groups": "",
                     "action": "TrackedDeviceOrientation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Debug",
+            "id": "9f2a0839-0f50-4cd7-a2f4-57b8f184b8cf",
+            "actions": [
+                {
+                    "name": "CheatMenu",
+                    "type": "Button",
+                    "id": "f4744ceb-b0f2-4c84-bc38-13770f09570f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "9eda9c0c-52c9-4dd0-b8c0-cf3cce0238da",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CheatMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
