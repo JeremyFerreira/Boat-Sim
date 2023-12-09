@@ -97,14 +97,14 @@ Material:
     - _AlphaClip: 0
     - _AlphaToMask: 0
     - _Amplitude: 8
-    - _Amplitude1: 0.5
-    - _Amplitude1_1: 0.1
-    - _Amplitude1_2: 0.5
-    - _Amplitude1_3: 0.6
-    - _Amplitude1_4: 2
-    - _Amplitude1_5: 1
-    - _Amplitude1_6: 1.2
-    - _Amplitude1_7: 4
+    - _Amplitude1: 1.5
+    - _Amplitude1_1: 2
+    - _Amplitude1_2: 1.5
+    - _Amplitude1_3: 3
+    - _Amplitude1_4: 0.7
+    - _Amplitude1_5: 0.5
+    - _Amplitude1_6: 0.2
+    - _Amplitude1_7: 0.05
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
@@ -120,8 +120,8 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
-    - _FoamHeight: 8
-    - _FoamPower: 3
+    - _FoamHeight: 5
+    - _FoamPower: 1
     - _FoamSpeed: 0.1
     - _FoamTiling: 50
     - _GlossMapScale: 0
@@ -129,55 +129,58 @@ Material:
     - _GlossyReflections: 0
     - _Gravity: 10
     - _Metallic: 0
-    - _NormalDistancePartialDerivative: 0.5
-    - _NormalSpeed: 0.02
+    - _NormalCameraPower: 3
+    - _NormalDistancePartialDerivative: 10
+    - _NormalSpeed: 0.01
     - _NormalSpeed2: -0.01
-    - _NormalStrength: 0.2
-    - _NormalStrength2: 0.5
-    - _NormalTiling: 50
-    - _NormalTiling2: 50
+    - _NormalStrength: 0.8
+    - _NormalStrength2: 0.8
+    - _NormalTiling: 100
+    - _NormalTiling2: 100
     - _OcclusionStrength: 1
     - _Parallax: 0.005
-    - _Phase: 0
+    - _Phase: -12.44
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Smoothness: 1
+    - _Smoothness: 0.88
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
     - _TimeScale: 2
-    - _TimeScale1: 0.5
-    - _TimeScale1_1: 0.2
-    - _TimeScale1_2: 1
+    - _TimeScale1: 1
+    - _TimeScale1_1: 0.5
+    - _TimeScale1_2: 0.5
     - _TimeScale1_3: 1
-    - _TimeScale1_4: 2
+    - _TimeScale1_4: 3
     - _TimeScale1_5: 1.5
-    - _TimeScale1_6: 1
-    - _TimeScale1_7: 0.8
+    - _TimeScale1_6: 2
+    - _TimeScale1_7: 1
     - _WaveBlendPower: 1
-    - _WaveHeight: 10
+    - _WaveHeight: 1
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 0.03357255, g: 0, b: 0.4245283, a: 0.8666667}
-    - _ColorHigh: {r: 0, g: 0.24772458, b: 0.5849056, a: 0.9647059}
-    - _ColorLow: {r: 0, g: 0.022298463, b: 0.122641504, a: 0.972549}
+    - _ColorHigh: {r: 0, g: 0.13163224, b: 0.31132078, a: 0.9411765}
+    - _ColorLow: {r: 0, g: 0.01845778, b: 0.09433961, a: 0.9411765}
     - _Direction: {r: 0.05, g: 0, b: 0, a: 0}
-    - _Direction1: {r: 0.17, g: 0, b: 0.13, a: 0}
-    - _Direction1_1: {r: 1, g: 0, b: 0, a: 0}
-    - _Direction1_2: {r: 0.13, g: 0, b: -0.15, a: 0}
-    - _Direction1_3: {r: 0.07, g: 0, b: 0, a: 0}
-    - _Direction1_4: {r: 0, g: 0, b: 0.05, a: 0}
-    - _Direction1_5: {r: -0.02, g: 0, b: 0.06, a: 0}
-    - _Direction1_6: {r: 0.03, g: 0, b: 0.08, a: 0}
-    - _Direction1_7: {r: 0.05, g: 0, b: 0, a: 0}
+    - _Direction1: {r: 0.01, g: 0, b: 0.01, a: 0}
+    - _Direction1_1: {r: -0.05, g: 0, b: 0, a: 0}
+    - _Direction1_2: {r: 0, g: 0, b: -0.05, a: 0}
+    - _Direction1_3: {r: -0.05, g: 0, b: -0.05, a: 0}
+    - _Direction1_4: {r: -0.1, g: 0, b: 0.1, a: 0}
+    - _Direction1_5: {r: 0.15, g: 0, b: -0.15, a: 0}
+    - _Direction1_6: {r: 0.3, g: 0, b: 0.3, a: 0}
+    - _Direction1_7: {r: -0.3, g: 0, b: 0.5, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FoamColor: {r: 1, g: 1, b: 1, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _Specular: {r: 0.1981132, g: 0.1981132, b: 0.1981132, a: 0}
+    - _cameradirection: {r: -1, g: -1, b: -1, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &7675215844728516806
 MonoBehaviour:
