@@ -7,7 +7,7 @@ using UnityEngine;
 public class FloatingObject : MonoBehaviour
 {
     [SerializeField] private WaterElevation _waterElevation;
-    [SerializeField] private Transform[] _floatingPoints;
+    [SerializeField] private FloatingPoint[] _floatingPoints;
     [SerializeField] private float _floatingForce;
     [SerializeField] private float _waterLinearDrag;
     [SerializeField] private float _airLinearDrag;
@@ -21,6 +21,7 @@ public class FloatingObject : MonoBehaviour
     {
         _objectRigidBody = GetComponent<Rigidbody>();
         _waterElevation = FindAnyObjectByType<WaterElevation>();
+        _floatingPoints = GetComponentsInChildren<FloatingPoint>();
 
     }
     // Start is called before the first frame update
@@ -32,7 +33,7 @@ public class FloatingObject : MonoBehaviour
     void FixedUpdate()
     {
         _objectRigidBody.centerOfMass = _centerOfmass.localPosition;
-        foreach (Transform floatingPoint in _floatingPoints)
+        foreach (FloatingPoint floatingPoint in _floatingPoints)
         {
             float heightBetweenPointAndWater = _waterElevation.GetElevation(floatingPoint.transform.position.x, floatingPoint.transform.position.z) - floatingPoint.transform.position.y;
             if (heightBetweenPointAndWater > 0)
@@ -60,7 +61,7 @@ public class FloatingObject : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;
-        foreach (Transform floatingPoint in _floatingPoints)
+        foreach (FloatingPoint floatingPoint in _floatingPoints)
         {
             float heightBetweenPointAndWater = -(floatingPoint.transform.position.y - _waterElevation.GetElevation(floatingPoint.transform.position.x, floatingPoint.transform.position.z));
             if (heightBetweenPointAndWater > 0)

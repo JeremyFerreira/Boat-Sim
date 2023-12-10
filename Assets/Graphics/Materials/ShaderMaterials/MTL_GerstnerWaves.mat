@@ -97,10 +97,10 @@ Material:
     - _AlphaClip: 0
     - _AlphaToMask: 0
     - _Amplitude: 8
-    - _Amplitude1: 1.5
-    - _Amplitude1_1: 2
-    - _Amplitude1_2: 1.5
-    - _Amplitude1_3: 3
+    - _Amplitude1: 1.2
+    - _Amplitude1_1: 1.3
+    - _Amplitude1_2: 1.2
+    - _Amplitude1_3: 2
     - _Amplitude1_4: 0.7
     - _Amplitude1_5: 0.5
     - _Amplitude1_6: 0.2
@@ -155,7 +155,7 @@ Material:
     - _TimeScale1_2: 0.5
     - _TimeScale1_3: 1
     - _TimeScale1_4: 3
-    - _TimeScale1_5: 1.5
+    - _TimeScale1_5: 1.2
     - _TimeScale1_6: 2
     - _TimeScale1_7: 1
     - _WaveBlendPower: 1
