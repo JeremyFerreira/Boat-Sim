@@ -98,7 +98,7 @@ Material:
     - _AlphaToMask: 0
     - _Amplitude: 8
     - _Amplitude1: 1.2
-    - _Amplitude1_1: 1.3
+    - _Amplitude1_1: 3
     - _Amplitude1_2: 1.2
     - _Amplitude1_3: 2
     - _Amplitude1_4: 0.7
@@ -113,23 +113,23 @@ Material:
     - _Cull: 2
     - _Cutoff: 0.5
     - _Depth: 10
-    - _DepthPower: 0.5
+    - _DepthPower: 1
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _DistanceToShore: 9.47
+    - _DistanceToShore: 10
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
     - _FoamHeight: 5
-    - _FoamPower: 1
-    - _FoamSpeed: 0.1
-    - _FoamTiling: 50
+    - _FoamPower: 0.1
+    - _FoamSpeed: 0.05
+    - _FoamTiling: 200
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Gravity: 10
     - _Metallic: 0
-    - _NormalCameraPower: 3
+    - _NormalCameraPower: 1
     - _NormalDistancePartialDerivative: 10
     - _NormalSpeed: 0.01
     - _NormalSpeed2: -0.01
@@ -151,7 +151,7 @@ Material:
     - _Surface: 0
     - _TimeScale: 2
     - _TimeScale1: 1
-    - _TimeScale1_1: 0.5
+    - _TimeScale1_1: 3
     - _TimeScale1_2: 0.5
     - _TimeScale1_3: 1
     - _TimeScale1_4: 3
@@ -165,8 +165,8 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 0.03357255, g: 0, b: 0.4245283, a: 0.8666667}
-    - _ColorHigh: {r: 0, g: 0.13163224, b: 0.31132078, a: 0.9411765}
-    - _ColorLow: {r: 0, g: 0.01845778, b: 0.09433961, a: 0.9411765}
+    - _ColorHigh: {r: 0, g: 0.2557918, b: 0.5943396, a: 0.9411765}
+    - _ColorLow: {r: 0, g: 0.011792438, b: 0.05660379, a: 0.9411765}
     - _Direction: {r: 0.05, g: 0, b: 0, a: 0}
     - _Direction1: {r: 0.01, g: 0, b: 0.01, a: 0}
     - _Direction1_1: {r: -0.05, g: 0, b: 0, a: 0}
