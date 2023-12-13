@@ -16,6 +16,7 @@ public class FloatingObject : MonoBehaviour
     private Rigidbody _objectRigidBody;
     [SerializeField] private float _averageHeight;
     [SerializeField] private Transform _centerOfmass;
+    [SerializeField] private float _axeZAngularDrag = 0.97f;
 
     private void OnValidate()
     {
@@ -33,24 +34,25 @@ public class FloatingObject : MonoBehaviour
     void FixedUpdate()
     {
         _objectRigidBody.centerOfMass = _centerOfmass.localPosition;
+        int numberOfFloatingPointInWater = 0;
         foreach (FloatingPoint floatingPoint in _floatingPoints)
         {
             float heightBetweenPointAndWater = _waterElevation.GetElevation(floatingPoint.transform.position.x, floatingPoint.transform.position.z) - floatingPoint.transform.position.y;
             if (heightBetweenPointAndWater > 0)
             {
                 _objectRigidBody.AddForceAtPosition(Vector3.up * Mathf.Sqrt(heightBetweenPointAndWater) * _floatingForce / _floatingPoints.Length, floatingPoint.transform.position, ForceMode.Acceleration);
+                numberOfFloatingPointInWater++;
             }
-            /*else
-            {
-                _objectRigidBody.AddForceAtPosition(Physics.gravity / _floatingPoints.Length, floatingPoint.transform.position, ForceMode.Acceleration);
-            }*/
         }
-        //calculate Drag
+        /*//calculate Drag
         float ratioMassUnderwater = GetRatioMassUnderWater();
-        float ratioMassInAir = 1-ratioMassUnderwater;
+        float ratioMassInAir = 1-ratioMassUnderwater;*/
+        float ratioMassUnderwater = (float)numberOfFloatingPointInWater / _floatingPoints.Length;
+        float ratioMassInAir = 1 - ratioMassUnderwater;
         float verticalDrag = Mathf.Lerp(_waterLinearDrag,_airLinearDrag, ratioMassInAir);
         _objectRigidBody.velocity = new Vector3(_objectRigidBody.velocity.x, _objectRigidBody.velocity.y * verticalDrag, _objectRigidBody.velocity.z);
-        _objectRigidBody.angularDrag =  ratioMassUnderwater * _waterAngularDrag + ratioMassInAir * _airAngularDrag;
+        _objectRigidBody.angularDrag = ratioMassUnderwater * _waterAngularDrag + ratioMassInAir * _airAngularDrag;
+        _objectRigidBody.angularVelocity = new Vector3(_objectRigidBody.angularVelocity.x, _objectRigidBody.angularVelocity.y, _objectRigidBody.angularVelocity.z*_axeZAngularDrag);
     }
 
     //Big Approximation! (would be cool to calculate based on rotation)

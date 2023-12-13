@@ -20,6 +20,6 @@ public class BoatStatsPrinter : MonoBehaviour
 
     private void Update()
     {
-        _boatSpeedtext.text = (Mathf.RoundToInt((new Vector3(_boatRigidbody.velocity.x,0, _boatRigidbody.velocity.z).magnitude * 3.6f)*100f)/100f).ToString() + " km/h";
+        _boatSpeedtext.text = (Mathf.RoundToInt(new Vector3(_boatRigidbody.velocity.x,0, _boatRigidbody.velocity.z).magnitude * 3.6f)).ToString() + " km/h";
     }
 }

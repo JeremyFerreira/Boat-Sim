@@ -98,7 +98,7 @@ Material:
     - _AlphaToMask: 0
     - _Amplitude: 8
     - _Amplitude1: 1.2
-    - _Amplitude1_1: 1
+    - _Amplitude1_1: 2
     - _Amplitude1_2: 1.2
     - _Amplitude1_3: 2
     - _Amplitude1_4: 0.7
@@ -151,7 +151,7 @@ Material:
     - _Surface: 0
     - _TimeScale: 2
     - _TimeScale1: 0.8
-    - _TimeScale1_1: 2.4
+    - _TimeScale1_1: 1.5
     - _TimeScale1_2: 0.5
     - _TimeScale1_3: 0.8
     - _TimeScale1_4: 2.4
