@@ -10,8 +10,6 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField]
     private WaterElevation _waterEvaluation;
-         [SerializeField]
-    private Vector3 test;
     [SerializeField]
     public CinemachineVirtualCamera _virtualCamera;
     [HideInInspector]
@@ -88,7 +86,6 @@ public class CameraController : MonoBehaviour
 
     private void LateUpdate()
     {
-        Debug.Log(_waterEvaluation.GetElevation(test.x, test.y));
         CalculateActualDistance(_targetDistance);
         CalculateActualAngels(_targetAngels);
         SetFov();
