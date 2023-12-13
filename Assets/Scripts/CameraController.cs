@@ -9,6 +9,10 @@ using System;
 public class CameraController : MonoBehaviour
 {
     [SerializeField]
+    private WaterElevation _waterEvaluation;
+         [SerializeField]
+    private Vector3 test;
+    [SerializeField]
     public CinemachineVirtualCamera _virtualCamera;
     [HideInInspector]
     public CinemachineTransposer _transposer;
@@ -84,6 +88,7 @@ public class CameraController : MonoBehaviour
 
     private void LateUpdate()
     {
+        Debug.Log(_waterEvaluation.GetElevation(test.x, test.y));
         CalculateActualDistance(_targetDistance);
         CalculateActualAngels(_targetAngels);
         SetFov();
@@ -136,6 +141,11 @@ public class CameraController : MonoBehaviour
     private void SetCameraPostion(float distance, float latitude, float longitude)
     {
         Vector3 localPosition = FindPointWithAngels(distance, latitude, longitude);
+        float yWater = _waterEvaluation.GetElevation(localPosition.x, localPosition.y);
+        if (localPosition.y < yWater)
+        {
+           localPosition.y = yWater;
+        }
         _transposer.m_FollowOffset = localPosition + _offsetCenter;
     }
 
