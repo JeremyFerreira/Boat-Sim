@@ -142,9 +142,9 @@ public class CameraController : MonoBehaviour
     {
         Vector3 localPosition = FindPointWithAngels(distance, latitude, longitude);
         float yWater = _waterEvaluation.GetElevation(localPosition.x, localPosition.y);
-        if (localPosition.y < yWater)
+        if (localPosition.y - 0.5f < yWater)
         {
-           localPosition.y = yWater;
+           localPosition.y = yWater + 0.5f;
         }
         _transposer.m_FollowOffset = localPosition + _offsetCenter;
     }
