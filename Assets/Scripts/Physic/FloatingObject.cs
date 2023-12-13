@@ -40,6 +40,10 @@ public class FloatingObject : MonoBehaviour
             {
                 _objectRigidBody.AddForceAtPosition(Vector3.up * Mathf.Sqrt(heightBetweenPointAndWater) * _floatingForce / _floatingPoints.Length, floatingPoint.transform.position, ForceMode.Acceleration);
             }
+            /*else
+            {
+                _objectRigidBody.AddForceAtPosition(Physics.gravity / _floatingPoints.Length, floatingPoint.transform.position, ForceMode.Acceleration);
+            }*/
         }
         //calculate Drag
         float ratioMassUnderwater = GetRatioMassUnderWater();
