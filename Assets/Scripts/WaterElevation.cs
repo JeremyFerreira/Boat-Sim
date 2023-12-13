@@ -40,6 +40,10 @@ public class WaterElevation : MonoBehaviour
     {
         SetParameters();
     }
+    private void Awake()
+    {
+        SetParameters();
+    }
     private void SetParameters()
     {
         _phase = waterMaterial.GetFloat("_Phase");
