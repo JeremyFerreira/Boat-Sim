@@ -62,6 +62,24 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""MoveCamera"",
+                    ""type"": ""Value"",
+                    ""id"": ""054a9f8b-7520-47af-9866-18886b6b1b4a"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ZoomCamera"",
+                    ""type"": ""Value"",
+                    ""id"": ""dbb2b289-d45f-477e-ba60-24cdf586e824"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -172,6 +190,50 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""MoveRudder"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f61df2d1-0c1e-4a88-ae28-a5dbf91ae57e"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveCamera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""1e94b84b-02bb-417a-9685-99e53628394b"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ZoomCamera"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""5f19112c-9eba-4c09-bb67-5f30a215aafb"",
+                    ""path"": ""<Mouse>/scroll/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ZoomCamera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""94865fb0-de30-48c0-a3c4-f20b408a1959"",
+                    ""path"": ""<Mouse>/scroll/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ZoomCamera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 }
@@ -870,6 +932,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Game_MoveSailing = m_Game.FindAction("Move Sailing", throwIfNotFound: true);
         m_Game_OpeningSailing = m_Game.FindAction("OpeningSailing", throwIfNotFound: true);
         m_Game_MoveRudder = m_Game.FindAction("MoveRudder", throwIfNotFound: true);
+        m_Game_MoveCamera = m_Game.FindAction("MoveCamera", throwIfNotFound: true);
+        m_Game_ZoomCamera = m_Game.FindAction("ZoomCamera", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_AnyKey = m_UI.FindAction("AnyKey", throwIfNotFound: true);
@@ -952,6 +1016,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Game_MoveSailing;
     private readonly InputAction m_Game_OpeningSailing;
     private readonly InputAction m_Game_MoveRudder;
+    private readonly InputAction m_Game_MoveCamera;
+    private readonly InputAction m_Game_ZoomCamera;
     public struct GameActions
     {
         private @PlayerControls m_Wrapper;
@@ -960,6 +1026,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @MoveSailing => m_Wrapper.m_Game_MoveSailing;
         public InputAction @OpeningSailing => m_Wrapper.m_Game_OpeningSailing;
         public InputAction @MoveRudder => m_Wrapper.m_Game_MoveRudder;
+        public InputAction @MoveCamera => m_Wrapper.m_Game_MoveCamera;
+        public InputAction @ZoomCamera => m_Wrapper.m_Game_ZoomCamera;
         public InputActionMap Get() { return m_Wrapper.m_Game; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -981,6 +1049,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @MoveRudder.started += instance.OnMoveRudder;
             @MoveRudder.performed += instance.OnMoveRudder;
             @MoveRudder.canceled += instance.OnMoveRudder;
+            @MoveCamera.started += instance.OnMoveCamera;
+            @MoveCamera.performed += instance.OnMoveCamera;
+            @MoveCamera.canceled += instance.OnMoveCamera;
+            @ZoomCamera.started += instance.OnZoomCamera;
+            @ZoomCamera.performed += instance.OnZoomCamera;
+            @ZoomCamera.canceled += instance.OnZoomCamera;
         }
 
         private void UnregisterCallbacks(IGameActions instance)
@@ -997,6 +1071,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @MoveRudder.started -= instance.OnMoveRudder;
             @MoveRudder.performed -= instance.OnMoveRudder;
             @MoveRudder.canceled -= instance.OnMoveRudder;
+            @MoveCamera.started -= instance.OnMoveCamera;
+            @MoveCamera.performed -= instance.OnMoveCamera;
+            @MoveCamera.canceled -= instance.OnMoveCamera;
+            @ZoomCamera.started -= instance.OnZoomCamera;
+            @ZoomCamera.performed -= instance.OnZoomCamera;
+            @ZoomCamera.canceled -= instance.OnZoomCamera;
         }
 
         public void RemoveCallbacks(IGameActions instance)
@@ -1209,6 +1289,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnMoveSailing(InputAction.CallbackContext context);
         void OnOpeningSailing(InputAction.CallbackContext context);
         void OnMoveRudder(InputAction.CallbackContext context);
+        void OnMoveCamera(InputAction.CallbackContext context);
+        void OnZoomCamera(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

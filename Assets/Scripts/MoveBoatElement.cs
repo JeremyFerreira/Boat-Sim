@@ -12,15 +12,18 @@ public class MoveBoatElement
     private InputFloatScriptableObject _inputForMove;
     public Action<float> _eventMoveElement;
     [SerializeField]
+    [Range(0.1f, 1f)]
     private float _maxSpeed;
+    [SerializeField]
+    private float _acceleration;
 
     private float _percent;
     private float _speed;
     private float _way;
-
+    float refVel = 0;
     public MoveBoatElement ()
     {
-        _percent = 0.5f;
+        _percent = 0f;
         _speed = 0f;
         _way = 0;
     }
@@ -36,7 +39,6 @@ public class MoveBoatElement
 
     private void SetWay(float way)
     {
-        if (_way == way) { return; }
         _way = way;
     }
 
@@ -53,23 +55,6 @@ public class MoveBoatElement
         return 0;
     }
 
- /*   IEnumerator CoroutineMoveRudder()
-    {
-        CalculateSpeed(_way);
-        CalculatePercentRudder();
-
-        _eventMoveElement?.Invoke(_percentRudder);
-
-        if (_speed == 0 && _way == 0)
-        {
-            yield return null; 
-        }
-
-        yield return new WaitForEndOfFrame();
-
-        StartCoroutine(CoroutineMoveRudder());
-    }*/
-
     private void CalculatePercent()
     {
         _percent = Mathf.Clamp(_percent + _maxSpeed * _speed * Time.deltaTime, 0, 1);
@@ -78,17 +63,14 @@ public class MoveBoatElement
     {
         if (way != 0)
         {
-            _speed = Mathf.Clamp(_speed + (Time.deltaTime * way), -1, 1);
+            _speed = Mathf.Round(Mathf.SmoothDamp(_speed, way, ref refVel, _acceleration) * 100)/100;
             return;
         }
         else
         {
-            if (_speed > 0)
-            {
-                _speed = Mathf.Clamp(_speed - Time.deltaTime, 0, 1);
-                return;
-            }
-            _speed = Mathf.Clamp(_speed + Time.deltaTime, -1, 0);
+            _speed = Mathf.SmoothDamp(_speed, 0, ref refVel, _acceleration);
+            if(Mathf.Abs(_speed) < 0.001) { _speed = 0; }
         }
+        
     }
 }

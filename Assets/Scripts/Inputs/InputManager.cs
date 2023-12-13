@@ -14,6 +14,8 @@ public class InputManager : MonoBehaviour
     [SerializeField] private InputFloatScriptableObject _moveSalling;
     [SerializeField] private InputFloatScriptableObject _openingSalling;
     [SerializeField] private InputFloatScriptableObject _moveRudder;
+    [SerializeField] private InputVectorScriptableObject _moveCamera;
+    [SerializeField] private InputFloatScriptableObject _zoomCamera;
     [SerializeField] private InputButtonScriptableObject _pause;
 
     [Space]
@@ -105,6 +107,14 @@ public class InputManager : MonoBehaviour
         _input.Game.MoveRudder.performed += ctx =>  _moveRudder.ChangeValue(_input.Game.MoveRudder.ReadValue<float>());
         _input.Game.MoveRudder.canceled += ctx => _moveRudder.ChangeValue(0);
 
+        //MoveCamera
+        _input.Game.MoveCamera.performed += ctx => _moveCamera.ChangeValue(_input.Game.MoveCamera.ReadValue<Vector2>());
+        _input.Game.MoveCamera.canceled += ctx => _moveCamera.ChangeValue(new Vector2(0,0));
+
+        //ZoomCamera
+        _input.Game.ZoomCamera.performed += ctx => _zoomCamera.ChangeValue(_input.Game.ZoomCamera.ReadValue<float>());
+        _input.Game.ZoomCamera.canceled += ctx => _zoomCamera.ChangeValue(0);
+
         //Pause  
         _input.Game.Pause.performed += ctx => _pause.ChangeValue(true);
         _input.Game.Pause.canceled += ctx => _pause.ChangeValue(false);
@@ -123,6 +133,14 @@ public class InputManager : MonoBehaviour
         _input.Game.MoveRudder.performed -= ctx => _moveRudder.ChangeValue(_input.Game.OpeningSailing.ReadValue<float>());
         _input.Game.MoveRudder.canceled -= ctx => _moveRudder.ChangeValue(0);
 
+        //MoveCamera
+        _input.Game.MoveCamera.performed -= ctx => _moveCamera.ChangeValue(_input.Game.MoveCamera.ReadValue<Vector2>());
+        _input.Game.MoveCamera.canceled -= ctx => _moveCamera.ChangeValue(new Vector2(0, 0));
+
+        //ZoomCamera
+        _input.Game.ZoomCamera.performed += ctx => _zoomCamera.ChangeValue(_input.Game.ZoomCamera.ReadValue<float>());
+        _input.Game.ZoomCamera.canceled += ctx => _zoomCamera.ChangeValue(0);
+
         //Pause
         _input.Game.Pause.performed -= ctx => _pause.ChangeValue(true);
         _input.Game.Pause.canceled -= ctx => _pause.ChangeValue(false);
@@ -132,13 +150,11 @@ public class InputManager : MonoBehaviour
     {
         //cheatMenu
         _input.Debug.CheatMenu.performed += ctx => _cheatMenu.ChangeValue(!_cheatMenu.value);
-     //   _input.Debug.CheatMenu.canceled += ctx => _cheatMenu.ChangeValue(false);
     }
     public void UnSetDebugInput()
     {
         //cheatMenu
         _input.Debug.CheatMenu.performed += ctx => _cheatMenu.ChangeValue(!_cheatMenu.value);
-     //   _input.Debug.CheatMenu.canceled += ctx => _cheatMenu.ChangeValue(false);
     }
     #endregion
 
