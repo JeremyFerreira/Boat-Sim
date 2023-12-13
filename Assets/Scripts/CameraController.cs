@@ -67,7 +67,7 @@ public class CameraController : MonoBehaviour
 
         _targetDistance = _actualDistance;
 
-        _offsetTracketObject.Init(_composer.m_TrackedObjectOffset);
+        _offsetTracketObject.Init();
     }
 
     private void OnEnable()
@@ -139,13 +139,13 @@ public class CameraController : MonoBehaviour
         _transposer.m_FollowOffset = localPosition + _offsetCenter;
     }
 
-    private void SetFov()
+    public void SetFov()
     {
         float newFOV = Mathf.Lerp(_fovMin, _fovMax, _actualDistance / _distanceMax);
         _virtualCamera.m_Lens.FieldOfView = newFOV;
     }
 
-    private void SetTrackedOffset ()
+    public void SetTrackedOffset ()
     {
         _composer.m_TrackedObjectOffset = _offsetTracketObject.CalculateOffsetTracketObject(_composer.m_TrackedObjectOffset, _actualDistance, _actualLongitude, _actualLatitude);
     }
@@ -251,11 +251,11 @@ public class OffsetTracketObject
     private float _acceleration;
     private Vector3 _vel = Vector3.zero;
     private Vector3 targetOffsetObject;
+    [SerializeField]
     private Vector3 defaultOffset;
 
-    public void Init (Vector3 defaultOffset)
+    public void Init ()
     {
-        this.defaultOffset = defaultOffset;
         targetOffsetObject = defaultOffset;
     }
 
@@ -296,6 +296,8 @@ public class RefreshPostionCamera : Editor
             myScript = (CameraController)target;
         }
 
+        myScript.SetTrackedOffset();
+        myScript.SetFov();
         myScript.SetCameraPosition();
     }
 }
