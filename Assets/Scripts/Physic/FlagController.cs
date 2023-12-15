@@ -17,7 +17,10 @@ public class FlagController : MonoBehaviour
         Vector3 voileForward = Vector3.Cross(transform.up, windNormal);
         foreach (Transform t in _flagsTransforms)
         {
-            t.transform.rotation = Quaternion.LookRotation(voileForward, transform.up);
+            if(voileForward!=Vector3.zero)
+            {
+                t.transform.rotation = Quaternion.LookRotation(voileForward, transform.up);
+            }
         }
     }
 }

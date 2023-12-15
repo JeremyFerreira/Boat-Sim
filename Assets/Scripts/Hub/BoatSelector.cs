@@ -47,11 +47,27 @@ public class BoatSelector : MonoBehaviour
     }
     IEnumerator WaitForEndOfBlend(int index)
     {
-        yield return new WaitForSeconds(0.5f);
-        while(_brain.IsBlending)
+        /*AsyncOperation async = SceneManager.LoadSceneAsync(index);
+        async.allowSceneActivation = false;
+        while (!async.isDone)
+        {
+            if (async.progress >= 0.9f)
+            {
+                if(!_brain.IsBlending)
+                {
+                    async.allowSceneActivation = true;
+                }
+            }
+            yield return null;
+        }*/
+        yield return new WaitForSeconds(1.5f);
+        while (!_brain.IsBlending)
         {
             yield return null;
         }
+        SceneManager.UnloadSceneAsync(0);
         SceneManager.LoadScene(index);
+        //async.allowSceneActivation = true;
+
     }
 }

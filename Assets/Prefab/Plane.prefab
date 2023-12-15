@@ -55,10 +55,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e85e1a535a5bd694c88d740eb87443e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterMaterial: {fileID: 2100000, guid: d88a4f1c9fac9a24397d3101caebd80a, type: 2}
-  DrawGizmos: 0
-  WaterSize: 0
-  DistanceBetweenPoints: 10
+  waterMaterial: {fileID: 2100000, guid: 07dac0e3f10995d4b92c062e0339683d, type: 2}
+  DrawGizmos: 1
+  WaterSize: 104
+  DistanceBetweenPoints: 3.27
+  offset: {x: 0, y: 0, z: 0}
 --- !u!23 &5089110723049109408
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -79,7 +80,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d88a4f1c9fac9a24397d3101caebd80a, type: 2}
+  - {fileID: 2100000, guid: 07dac0e3f10995d4b92c062e0339683d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -113,4 +114,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91072f1d6e360a44197cafffb82e9501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  verticesPerSide: 200
+  verticesPerSide: 250

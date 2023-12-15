@@ -56,10 +56,10 @@ Material:
     m_Ints: []
     m_Floats:
     - _AmbientOcclusion: 1
-    - _Amplitude: 4
-    - _Amplitude2: 4
-    - _DepthPower: 1.52
-    - _Distance: 36.6
+    - _Amplitude: 1.7
+    - _Amplitude2: 1.5
+    - _DepthPower: 0.9
+    - _Distance: 73.5
     - _Frequency: 0.03
     - _Frequency2: 0.06
     - _Mettalic: 0
@@ -69,7 +69,7 @@ Material:
     - _Power2: 1
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Smoothness: 0.775
+    - _Smoothness: 1
     - _WaterNormalScale: 100
     - _WaterNormalTiling: 100
     - _WaterNormal_Strength: 0.5
@@ -78,7 +78,7 @@ Material:
     - _speed: 20
     - _speed2: 20
     m_Colors:
-    - _ColorHigh: {r: 0, g: 0.024478367, b: 0.39012396, a: 0.9529412}
-    - _ColorLow: {r: 0, g: 0.19741426, b: 0.7176471, a: 1}
+    - _ColorHigh: {r: 0, g: 0.05041598, b: 0.122641504, a: 0.9529412}
+    - _ColorLow: {r: 0, g: 0.12233144, b: 0.1509434, a: 1}
     - _direction: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []

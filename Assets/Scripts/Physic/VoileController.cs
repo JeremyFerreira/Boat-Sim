@@ -78,7 +78,10 @@ public class VoileController : MonoBehaviour
         Vector3 voileForward = Vector3.Cross(transform.up, normalDirection);
         foreach (Transform t in _voileTransforms)
         {
-            t.transform.rotation = Quaternion.Slerp(t.transform.rotation,Quaternion.LookRotation(voileForward, transform.up),Time.deltaTime *10f);
+            if(voileForward!=Vector3.zero)
+            {
+                t.transform.rotation = Quaternion.Slerp(t.transform.rotation,Quaternion.LookRotation(voileForward, transform.up),Time.deltaTime *10f);
+            }
         }
     }
     void RotateVoileBasedOnInput01(float value)
