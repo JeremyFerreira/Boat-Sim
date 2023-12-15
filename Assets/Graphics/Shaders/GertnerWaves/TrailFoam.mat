@@ -7,25 +7,26 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MTL_GerstnerWavesPhysicsTest
-  m_Shader: {fileID: -6465566751694194690, guid: 3b366ba87d9843c47afe9186ddbb9b62,
-    type: 3}
+  m_Name: TrailFoam
+  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - _EMISSION
   m_InvalidKeywords: []
-  m_LightmapFlags: 4
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap: {}
+  stringTagMap:
+    RenderType: Opaque
   disabledShaderPasses: []
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: e723609152744ee4fa2e5c53abdc8bca, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -45,27 +46,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _FoamTexture:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: e723609152744ee4fa2e5c53abdc8bca, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: e723609152744ee4fa2e5c53abdc8bca, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _NormalMap:
-        m_Texture: {fileID: 2800000, guid: e6eff83206addd741aa663c91795a78f, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _NormalMap2:
-        m_Texture: {fileID: 2800000, guid: e6eff83206addd741aa663c91795a78f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -76,16 +65,8 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _RipplesDisplacement_bad349be96414e7aba3593d03480e2ca_RippleTexture_3484687531_Texture2D:
-        m_Texture: {fileID: 8400000, guid: 2d20406c397883a44b9f1ab3316decb8, type: 2}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Texture2DAsset_25b63648386041efa111fb3936339068_Out_0_Texture2D:
-        m_Texture: {fileID: 8400000, guid: 2d20406c397883a44b9f1ab3316decb8, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -104,96 +85,41 @@ Material:
     m_Floats:
     - _AlphaClip: 0
     - _AlphaToMask: 0
-    - _Amplitude: 8
-    - _Amplitude1: 0.5
-    - _Amplitude1_1: 0.5
-    - _Amplitude1_2: 0.5
-    - _Amplitude1_3: 0.5
-    - _Amplitude1_4: 0.5
-    - _Amplitude1_5: 0.5
-    - _Amplitude1_6: 0.5
-    - _Amplitude1_7: 0.5
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
-    - _CameraSIze: 250
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
     - _Cutoff: 0.5
-    - _Depth: 5
-    - _DepthPower: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _DistanceToShore: 9.47
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
-    - _FoamHeight: 5
-    - _FoamHeightRipples: 0
-    - _FoamPower: 1
-    - _FoamSpeed: 0.1
-    - _FoamTiling: 50
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Gravity: 10
     - _Metallic: 0
-    - _NormalCameraPower: 3
-    - _NormalDistancePartialDerivative: 0.1
-    - _NormalSpeed: 0.01
-    - _NormalSpeed2: -0.01
-    - _NormalStrength: 0
-    - _NormalStrength2: 0
-    - _NormalTiling: 1
-    - _NormalTiling2: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.005
-    - _Phase: 0
-    - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Ripplesheight: 5
-    - _Smoothness: 0
+    - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
-    - _TimeScale: 2
-    - _TimeScale1: 2
-    - _TimeScale1_1: 3
-    - _TimeScale1_2: 3
-    - _TimeScale1_3: 3
-    - _TimeScale1_4: 2
-    - _TimeScale1_5: 3
-    - _TimeScale1_6: 2
-    - _TimeScale1_7: 3
-    - _WaveBlendPower: 1
-    - _WaveHeight: 1
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.03357255, g: 0, b: 0.4245283, a: 0.8666667}
-    - _ColorHigh: {r: 0, g: 0.122090444, b: 0.41509432, a: 1}
-    - _ColorLow: {r: 0, g: 0.0032946388, b: 0.0754717, a: 1}
-    - _Direction: {r: 0.05, g: 0, b: 0, a: 0}
-    - _Direction1: {r: 0, g: 0, b: 0.1, a: 0}
-    - _Direction1_1: {r: -0.15, g: 0, b: 0, a: 0}
-    - _Direction1_2: {r: 0, g: 0, b: 0.1, a: 0}
-    - _Direction1_3: {r: -0.05, g: 0, b: 0, a: 0}
-    - _Direction1_4: {r: -0.05, g: 0, b: 0.05, a: 0}
-    - _Direction1_5: {r: 0, g: 0, b: -0.1, a: 0}
-    - _Direction1_6: {r: 0.05, g: 0, b: 0.05, a: 0}
-    - _Direction1_7: {r: -0.05, g: 0, b: 0.05, a: 0}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FoamColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 2, g: 2, b: 2, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _Specular: {r: 0.1981132, g: 0.1981132, b: 0.1981132, a: 0}
-    - _cameradirection: {r: -1, g: -1, b: -1, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &7675215844728516806
+--- !u!114 &4565868403408564768
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
