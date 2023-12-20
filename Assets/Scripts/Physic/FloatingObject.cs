@@ -7,7 +7,7 @@ using UnityEngine;
 public class FloatingObject : MonoBehaviour
 {
     [SerializeField] private WaterElevation _waterElevation;
-    [SerializeField] private Transform[] _floatingPoints;
+    [SerializeField] private FloatingPoint[] _floatingPoints;
     [SerializeField] private float _floatingForce;
     [SerializeField] private float _waterLinearDrag;
     [SerializeField] private float _airLinearDrag;
@@ -16,11 +16,13 @@ public class FloatingObject : MonoBehaviour
     private Rigidbody _objectRigidBody;
     [SerializeField] private float _averageHeight;
     [SerializeField] private Transform _centerOfmass;
+    [SerializeField] private float _axeZAngularDrag = 0.97f;
 
     private void OnValidate()
     {
         _objectRigidBody = GetComponent<Rigidbody>();
         _waterElevation = FindAnyObjectByType<WaterElevation>();
+        _floatingPoints = GetComponentsInChildren<FloatingPoint>();
 
     }
     // Start is called before the first frame update
@@ -32,20 +34,25 @@ public class FloatingObject : MonoBehaviour
     void FixedUpdate()
     {
         _objectRigidBody.centerOfMass = _centerOfmass.localPosition;
-        foreach (Transform floatingPoint in _floatingPoints)
+        int numberOfFloatingPointInWater = 0;
+        foreach (FloatingPoint floatingPoint in _floatingPoints)
         {
             float heightBetweenPointAndWater = _waterElevation.GetElevation(floatingPoint.transform.position.x, floatingPoint.transform.position.z) - floatingPoint.transform.position.y;
             if (heightBetweenPointAndWater > 0)
             {
                 _objectRigidBody.AddForceAtPosition(Vector3.up * Mathf.Sqrt(heightBetweenPointAndWater) * _floatingForce / _floatingPoints.Length, floatingPoint.transform.position, ForceMode.Acceleration);
+                numberOfFloatingPointInWater++;
             }
         }
-        //calculate Drag
+        /*//calculate Drag
         float ratioMassUnderwater = GetRatioMassUnderWater();
-        float ratioMassInAir = 1-ratioMassUnderwater;
+        float ratioMassInAir = 1-ratioMassUnderwater;*/
+        float ratioMassUnderwater = (float)numberOfFloatingPointInWater / _floatingPoints.Length;
+        float ratioMassInAir = 1 - ratioMassUnderwater;
         float verticalDrag = Mathf.Lerp(_waterLinearDrag,_airLinearDrag, ratioMassInAir);
         _objectRigidBody.velocity = new Vector3(_objectRigidBody.velocity.x, _objectRigidBody.velocity.y * verticalDrag, _objectRigidBody.velocity.z);
-        _objectRigidBody.angularDrag =  ratioMassUnderwater * _waterAngularDrag + ratioMassInAir * _airAngularDrag;
+        _objectRigidBody.angularDrag = ratioMassUnderwater * _waterAngularDrag + ratioMassInAir * _airAngularDrag;
+        _objectRigidBody.angularVelocity = new Vector3(_objectRigidBody.angularVelocity.x, _objectRigidBody.angularVelocity.y, _objectRigidBody.angularVelocity.z*_axeZAngularDrag);
     }
 
     //Big Approximation! (would be cool to calculate based on rotation)
@@ -60,7 +67,7 @@ public class FloatingObject : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;
-        foreach (Transform floatingPoint in _floatingPoints)
+        foreach (FloatingPoint floatingPoint in _floatingPoints)
         {
             float heightBetweenPointAndWater = -(floatingPoint.transform.position.y - _waterElevation.GetElevation(floatingPoint.transform.position.x, floatingPoint.transform.position.z));
             if (heightBetweenPointAndWater > 0)

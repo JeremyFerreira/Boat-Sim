@@ -12,10 +12,16 @@ public class VoilePhysic : MonoBehaviour
     private float _voileSurfaceMultiplier;
     public float VoileSurfaceMultiplier { get { return _voileSurfaceMultiplier;} set { _voileSurfaceMultiplier = value;} }
 
+    [SerializeField] private float _maxSpeed;
+
 
     float GetForceByWind()
     {
-        return GetVoileSurfaceBasedOnWindDirection() * GetForceMultiplierByWindDirection() * _windData.WindForce * _boatRigidbody.drag;
+        if(new Vector3(_boatRigidbody.velocity.x, 0, _boatRigidbody.velocity.z).magnitude * 3.6f > _maxSpeed)
+        {
+            return 0;
+        }
+        return GetVoileSurfaceBasedOnWindDirection() * GetForceMultiplierByWindDirection() * _windData.WindForce;
     }
     //the amount of surface that will be effective by wind
     float GetVoileSurfaceBasedOnWindDirection()

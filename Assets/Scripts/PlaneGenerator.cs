@@ -5,7 +5,7 @@ public class PlaneGenerator : MonoBehaviour
     public int verticesPerSide = 10;
 
     [EasyButtons.Button]
-    public void GeneratePlaneMesh()
+    public void GeneratePlaneMesh(float a)
     {
         MeshFilter meshFilter = GetComponent<MeshFilter>();
         Mesh mesh = new Mesh();
