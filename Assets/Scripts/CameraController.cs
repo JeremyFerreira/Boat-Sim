@@ -93,7 +93,7 @@ public class CameraController : MonoBehaviour
         SetCameraPostion(_actualDistance / _distanceMax, _actualLatitude / _maxLatitude, _actualLongitude / 180f);
     }
 
-    private void SetComponentRef()
+    public void SetComponentRef()
     {
         _transposer = _virtualCamera.GetCinemachineComponent<CinemachineTransposer>();
         _composer = _virtualCamera.GetCinemachineComponent<CinemachineComposer>();
@@ -303,6 +303,7 @@ public class RefreshPostionCamera : Editor
             myScript = (CameraController)target;
         }
 
+        myScript.SetComponentRef();
         myScript.SetTrackedOffset();
         myScript.SetFov();
         myScript.SetCameraPosition();
