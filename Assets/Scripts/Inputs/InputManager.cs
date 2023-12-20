@@ -17,6 +17,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] private InputVectorScriptableObject _moveCamera;
     [SerializeField] private InputFloatScriptableObject _zoomCamera;
     [SerializeField] private InputButtonScriptableObject _pause;
+    [SerializeField] private InputButtonScriptableObject _cameraSwitch;
 
     [Space]
     [Header("Debug")]
@@ -94,7 +95,6 @@ public class InputManager : MonoBehaviour
     #region FUNCTIONS: SET/UNSET INPUTS
     public void SetGameInput()
     {
-        Debug.Log(_moveRudder);
         //MoveSailing
         _input.Game.MoveSailing.performed += ctx => _moveSalling.ChangeValue(_input.Game.MoveSailing.ReadValue<float>());
         _input.Game.MoveSailing.canceled += ctx => _moveSalling.ChangeValue(0);
@@ -118,6 +118,9 @@ public class InputManager : MonoBehaviour
         //Pause  
         _input.Game.Pause.performed += ctx => _pause.ChangeValue(true);
         _input.Game.Pause.canceled += ctx => _pause.ChangeValue(false);
+
+        //CameraSwitch  
+        _input.Game.SwitchCamera.performed += ctx => _cameraSwitch.ChangeValue(true);
     }
     public void UnSetGameInput()
     {
@@ -144,6 +147,9 @@ public class InputManager : MonoBehaviour
         //Pause
         _input.Game.Pause.performed -= ctx => _pause.ChangeValue(true);
         _input.Game.Pause.canceled -= ctx => _pause.ChangeValue(false);
+
+        //CameraSwitch  
+        _input.Game.SwitchCamera.performed -= ctx => _cameraSwitch.ChangeValue(true);
     }
 
     public void SetDebugInput()

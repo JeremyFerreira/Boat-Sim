@@ -86,7 +86,7 @@ public class CameraController : MonoBehaviour
         _moveCamera.OnValueChanged -= CalculTargetAngels;
     }
 
-    private void LateUpdate()
+    private void FixedUpdate()
     {
         CalculateActualDistance(_targetDistance);
         CalculateActualAngels(_targetAngels);

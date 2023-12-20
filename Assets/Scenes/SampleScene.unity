@@ -5782,6 +5782,7 @@ GameObject:
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
   - component: {fileID: 330585548}
+  - component: {fileID: 330585549}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5830,7 +5831,7 @@ Camera:
     height: 1
   near clip plane: 1
   far clip plane: 1000
-  field of view: 90
+  field of view: 74.85
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -5856,8 +5857,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0.09911291, z: 0, w: 0.9950762}
-  m_LocalPosition: {x: 40.597527, y: 2.2400007, z: -10.594481}
+  m_LocalRotation: {x: -0.040319107, y: 0.31390628, z: 0.013343564, w: 0.9485037}
+  m_LocalPosition: {x: 2.4051018, y: 15.848713, z: -50.468353}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5924,7 +5925,7 @@ MonoBehaviour:
   m_IgnoreTimeScale: 0
   m_WorldUpOverride: {fileID: 0}
   m_UpdateMethod: 2
-  m_BlendUpdateMethod: 1
+  m_BlendUpdateMethod: 0
   m_DefaultBlend:
     m_Style: 1
     m_Time: 2
@@ -5941,6 +5942,23 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &330585549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7abb6741394924c45aee3a8759ed4981, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cameraSwitch: {fileID: 11400000, guid: 851a38fbc78e8974fb22dc13f748f279, type: 2}
+  _cameras:
+  - {fileID: 1333894379}
+  - {fileID: 2106924047}
+  _coolDownInSec: 1
 --- !u!4 &347756599 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2329556285992853263, guid: 0c5a18343e44b7d4da98404de2b51bc8,
@@ -13657,10 +13675,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveSalling: {fileID: 11400000, guid: e52cac553c8b1ef4bb17c80e81fd66c0, type: 2}
   _openingSalling: {fileID: 11400000, guid: 0f56f29e3c9ef8c419065f9730b183d8, type: 2}
-  _moveRudder: {fileID: 11400000, guid: e52cac553c8b1ef4bb17c80e81fd66c0, type: 2}
+  _moveRudder: {fileID: 11400000, guid: b2e09986754852144a5348805565dd57, type: 2}
   _moveCamera: {fileID: 11400000, guid: a7977f5ac73e40d4c856d34d2e8c4cf7, type: 2}
   _zoomCamera: {fileID: 11400000, guid: a78c357666d49e842b1ce676df850f65, type: 2}
   _pause: {fileID: 11400000, guid: a5a4d19ad2f6a7245abbf8c5002977a5, type: 2}
+  _cameraSwitch: {fileID: 11400000, guid: 851a38fbc78e8974fb22dc13f748f279, type: 2}
   _cheatMenu: {fileID: 11400000, guid: 8c0330ca798b4a94388b1e777ef93acc, type: 2}
 --- !u!1 &1193673626
 GameObject:
@@ -14007,8 +14026,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1333894379}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.009144653, y: 0.6334975, z: -0.007487986, w: 0.7736545}
-  m_LocalPosition: {x: -98.37698, y: 14.292595, z: -16.998806}
+  m_LocalRotation: {x: -0.040319107, y: 0.31390628, z: 0.013343564, w: 0.9485037}
+  m_LocalPosition: {x: -30.594898, y: 7.8287125, z: -36.468353}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14036,7 +14055,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 664313333}
   m_Follow: {fileID: 664313333}
   m_Lens:
-    FieldOfView: 90
+    FieldOfView: 74.85
     OrthographicSize: 10
     NearClipPlane: 1
     FarClipPlane: 1000
@@ -14076,11 +14095,11 @@ MonoBehaviour:
     _datas:
     - minDistance: 40
       maxDistance: 60
-      minLongitude: -110
-      maxLongitude: -60
+      minLongitude: -130
+      maxLongitude: -30
       minLatitude: 0
-      maxLatitude: 30
-      _offsetResult: {x: 0, y: 10, z: 30}
+      maxLatitude: 40
+      _offsetResult: {x: 0, y: 10, z: 47.96}
     - minDistance: 40
       maxDistance: 60
       minLongitude: -25
@@ -14116,17 +14135,18 @@ MonoBehaviour:
   _distanceMin: 40
   _fovMax: 90
   _fovMin: 60
-  _actualDistance: 100
+  _actualDistance: 49.5
   _accelerationDistance: 0.3
-  _sensiDistance: 100
+  _speedDistance: 150
   _moveCamera: {fileID: 11400000, guid: a7977f5ac73e40d4c856d34d2e8c4cf7, type: 2}
   _minLatitude: 5
   _maxLatitude: 70
-  _actualLatitude: 9.4
-  _actualLongitude: 180
+  _actualLatitude: 11.5
+  _actualLongitude: -138
   _accelerationAngels: 0.5
   _speedAngels: 100
   _speedLatitudeMultiply: 1
+  _offsetAboveWater: 0
 --- !u!114 &1338507113 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2277858347839296873, guid: 4b42dea8a780ff146bec5354bd6e31b3,
@@ -14650,7 +14670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: -98.65721, y: 16.332596, z: 0.000008624887}
+  m_FollowOffset: {x: -36.047184, y: 9.868712, z: -32.45703}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -14671,7 +14691,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TrackedObjectOffset: {x: 0, y: 13.999999, z: 0}
+  m_TrackedObjectOffset: {x: 0, y: 13.999999, z: 2.6877448e-12}
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 0
   m_LookaheadIgnoreY: 0
@@ -16713,13 +16733,14 @@ GameObject:
   m_Component:
   - component: {fileID: 2106924048}
   - component: {fileID: 2106924049}
+  - component: {fileID: 2106924050}
   m_Layer: 0
-  m_Name: VirualCamera_SideLook
+  m_Name: VirualCamera_UpLook
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2106924048
 Transform:
   m_ObjectHideFlags: 0
@@ -16729,7 +16750,7 @@ Transform:
   m_GameObject: {fileID: 2106924047}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.12, y: 3.34, z: 1.84}
+  m_LocalPosition: {x: -0.17, y: 24.27, z: 6.88}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -16757,9 +16778,9 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 90
+    FieldOfView: 66.05
     OrthographicSize: 10
-    NearClipPlane: 1
+    NearClipPlane: 0.1
     FarClipPlane: 1000
     Dutch: 0
     ModeOverride: 0
@@ -16768,13 +16789,37 @@ MonoBehaviour:
     FocusDistance: 10
     m_SensorSize: {x: 1, y: 1}
   m_Transitions:
-    m_BlendHint: 0
+    m_BlendHint: 3
     m_InheritPosition: 0
     m_OnCameraLive:
       m_PersistentCalls:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 1850191195}
+--- !u!114 &2106924050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2106924047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a74d586600da384d82b275f033a08d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _waterEvaluation: {fileID: 1338507113}
+  _offsetAboveWater: 1
+  _moveCamera: {fileID: 11400000, guid: a7977f5ac73e40d4c856d34d2e8c4cf7, type: 2}
+  _actualAngel: {x: 0, y: 0}
+  _minAngel: {x: -50, y: -100}
+  _maxAngel: {x: 20, y: 90}
+  _speed: 100
+  _acceleration: 0.3
+  _minForceMouse: {x: 0, y: 0}
+  _repeat: 0
+  _initialPosition: {x: 31.476261, y: 24.170002, z: -7.288702}
+  editor: 0
 --- !u!1 &2121558134
 GameObject:
   m_ObjectHideFlags: 0
@@ -17016,7 +17061,7 @@ PrefabInstance:
     - target: {fileID: 2277858347839296873, guid: 4b42dea8a780ff146bec5354bd6e31b3,
         type: 3}
       propertyPath: DistanceBetweenPoints
-      value: 3.95
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2320720220240751027, guid: 4b42dea8a780ff146bec5354bd6e31b3,
         type: 3}
@@ -17643,6 +17688,11 @@ PrefabInstance:
     - target: {fileID: 5312162700420198572, guid: 0c5a18343e44b7d4da98404de2b51bc8,
         type: 3}
       propertyPath: _moveSallingElement._maxSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312162700420198572, guid: 0c5a18343e44b7d4da98404de2b51bc8,
+        type: 3}
+      propertyPath: _rotateSallingElement._maxSpeed
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5312162700420198572, guid: 0c5a18343e44b7d4da98404de2b51bc8,

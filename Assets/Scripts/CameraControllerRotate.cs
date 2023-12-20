@@ -1,4 +1,6 @@
 using System.Collections;using System.Collections.Generic;
+using UnityEditor;
+using UnityEditorInternal.VR;
 using UnityEngine;
 
 public class CameraControllerRotate : MonoBehaviour
@@ -7,11 +9,11 @@ public class CameraControllerRotate : MonoBehaviour
     [SerializeField]
     private WaterElevation _waterEvaluation;
     [SerializeField]
-    private float _offsetAboveWater;
+    public float _offsetAboveWater;
     [SerializeField]
     private InputVectorScriptableObject _moveCamera;
     [SerializeField]
-    private Vector2 _actualAngel;
+    public Vector2 _actualAngel;
     [SerializeField]
     private Vector2 _minAngel, _maxAngel;
     [SerializeField]
@@ -27,7 +29,9 @@ public class CameraControllerRotate : MonoBehaviour
     private Vector2 _oldAngel;
     private Vector2 vel;
 
-    private Vector3 _initialPosition;
+    public Vector3 _initialPosition;
+
+    public bool editor;
 
     private void OnEnable()
     {
@@ -43,44 +47,42 @@ public class CameraControllerRotate : MonoBehaviour
     void Start()
     {
         _targetAngel = _actualAngel;
-        _initialPosition = transform.position;
+        _initialPosition = transform.position + new Vector3(0,_offsetAboveWater,0);
     }
-
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-       // Debug.Log(transform.rotation);
         CalculateActualAngel();
 
         SetCameraRotation();
     }
 
-    private void SetCameraRotation ()
+    public void SetCameraRotation ()
     {
         _actualAngel.x = Mathf.Clamp(_actualAngel.x, _minAngel.x, _maxAngel.x);
         _actualAngel.y = Mathf.Clamp(_actualAngel.y, _minAngel.y, _maxAngel.y);
-
-        /* float yWater = _waterEvaluation.GetElevation(transform.position.x, transform.position.y);
-         if (transform.position.y - _offsetAboveWater < yWater)
-         {
-             transform.position = new Vector3(transform.position.x, yWater + _offsetAboveWater, transform.position.z);
-         }
-         else
-         {
-             transform.position = _initialPosition;
-         }*/
+       // transform.position = new Vector3(transform.position.x, _waterEvaluation.GetElevation(transform.position.x, transform.position.y) + _offsetAboveWater, transform.position.z);;
+        /*   float yWater = _waterEvaluation.GetElevation(transform.position.x, transform.position.y);
+           if (transform.position.y - _offsetAboveWater < yWater)
+           {
+               transform.position = new Vector3(transform.position.x, yWater + _offsetAboveWater, transform.position.z);
+           }
+           else
+           {
+               transform.position = _initialPosition;
+           }*/
         Vector3 angelToSet = ((transform.rotation.eulerAngles) - (Vector3) _oldAngel)  + (Vector3)_actualAngel;
         _oldAngel = _actualAngel;
+        angelToSet.z = 0;
         transform.rotation = Quaternion.Euler(angelToSet);
         //Quaternion.EulerAngles
     }
 
-    private void CalculateActualAngel ()
+    public void CalculateActualAngel ()
     {
         _actualAngel = Vector2.SmoothDamp(_actualAngel, _targetAngel,ref vel, _acceleration);
     }
 
-    private void CalculateTargetAngel (Vector2 value)
+    public void CalculateTargetAngel (Vector2 value)
     {
         if (Mathf.Abs(value.x) < _minForceMouse.x) { value.x = 0; }
         if (Mathf.Abs(value.y) < _minForceMouse.y) { value.y = 0; }
@@ -116,3 +118,26 @@ public class CameraControllerRotate : MonoBehaviour
         return value;
     }
 }
+
+#if UNITY_EDITOR
+
+[CustomEditor(typeof(CameraControllerRotate))]
+public class RefreshPostionCameraT : Editor
+{
+    CameraControllerRotate myScript;
+
+    public override void OnInspectorGUI()
+    {
+        base.OnInspectorGUI();
+        if (myScript == null)
+        {
+            myScript = (CameraControllerRotate)target;
+            myScript._initialPosition = myScript.transform.position + new Vector3(0, myScript._offsetAboveWater, 0);
+        }
+        if(myScript.editor)
+        {
+            myScript.SetCameraRotation();
+        }
+    } 
+}
+#endif

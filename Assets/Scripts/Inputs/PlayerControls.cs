@@ -80,6 +80,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""SwitchCamera"",
+                    ""type"": ""Button"",
+                    ""id"": ""5ea6c6cb-7f33-4c7c-8331-38117a6c451f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -236,6 +245,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""ZoomCamera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e08b0749-c082-4431-a81d-ed015baefa52"",
+                    ""path"": ""<Mouse>/middleButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchCamera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -934,6 +954,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Game_MoveRudder = m_Game.FindAction("MoveRudder", throwIfNotFound: true);
         m_Game_MoveCamera = m_Game.FindAction("MoveCamera", throwIfNotFound: true);
         m_Game_ZoomCamera = m_Game.FindAction("ZoomCamera", throwIfNotFound: true);
+        m_Game_SwitchCamera = m_Game.FindAction("SwitchCamera", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_AnyKey = m_UI.FindAction("AnyKey", throwIfNotFound: true);
@@ -1018,6 +1039,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Game_MoveRudder;
     private readonly InputAction m_Game_MoveCamera;
     private readonly InputAction m_Game_ZoomCamera;
+    private readonly InputAction m_Game_SwitchCamera;
     public struct GameActions
     {
         private @PlayerControls m_Wrapper;
@@ -1028,6 +1050,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @MoveRudder => m_Wrapper.m_Game_MoveRudder;
         public InputAction @MoveCamera => m_Wrapper.m_Game_MoveCamera;
         public InputAction @ZoomCamera => m_Wrapper.m_Game_ZoomCamera;
+        public InputAction @SwitchCamera => m_Wrapper.m_Game_SwitchCamera;
         public InputActionMap Get() { return m_Wrapper.m_Game; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1055,6 +1078,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @ZoomCamera.started += instance.OnZoomCamera;
             @ZoomCamera.performed += instance.OnZoomCamera;
             @ZoomCamera.canceled += instance.OnZoomCamera;
+            @SwitchCamera.started += instance.OnSwitchCamera;
+            @SwitchCamera.performed += instance.OnSwitchCamera;
+            @SwitchCamera.canceled += instance.OnSwitchCamera;
         }
 
         private void UnregisterCallbacks(IGameActions instance)
@@ -1077,6 +1103,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @ZoomCamera.started -= instance.OnZoomCamera;
             @ZoomCamera.performed -= instance.OnZoomCamera;
             @ZoomCamera.canceled -= instance.OnZoomCamera;
+            @SwitchCamera.started -= instance.OnSwitchCamera;
+            @SwitchCamera.performed -= instance.OnSwitchCamera;
+            @SwitchCamera.canceled -= instance.OnSwitchCamera;
         }
 
         public void RemoveCallbacks(IGameActions instance)
@@ -1291,6 +1320,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnMoveRudder(InputAction.CallbackContext context);
         void OnMoveCamera(InputAction.CallbackContext context);
         void OnZoomCamera(InputAction.CallbackContext context);
+        void OnSwitchCamera(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
