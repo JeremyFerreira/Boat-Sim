@@ -39,7 +39,7 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     private float _accelerationDistance;
     [SerializeField]
-    private float _sensiDistance;
+    private float _speedDistance;
 
     [Space]
     [Header("MOVECAMERA")]
@@ -61,6 +61,8 @@ public class CameraController : MonoBehaviour
     private float _speedAngels;
     [SerializeField]
     private float _speedLatitudeMultiply;
+    [SerializeField]
+    private float _offsetAboveWater;
 
     private void Start()
     {
@@ -139,9 +141,9 @@ public class CameraController : MonoBehaviour
     {
         Vector3 localPosition = FindPointWithAngels(distance, latitude, longitude);
         float yWater = _waterEvaluation.GetElevation(localPosition.x, localPosition.y);
-        if (localPosition.y - 0.5f < yWater)
+        if (localPosition.y - _offsetAboveWater < yWater)
         {
-           localPosition.y = yWater + 0.5f;
+           localPosition.y = yWater + _offsetAboveWater;
         }
         _transposer.m_FollowOffset = localPosition + _offsetCenter;
     }
@@ -179,7 +181,7 @@ public class CameraController : MonoBehaviour
     {
         if(value == 0) { return; }
         value = Mathf.Clamp(value, -1, 1);
-        _targetDistance += value * Mathf.Lerp(_sensiDistance * 0.5f, _sensiDistance,_actualDistance/_distanceMax) * Time.deltaTime;
+        _targetDistance += value * Mathf.Lerp(_speedDistance * 0.5f, _speedDistance,_actualDistance/_distanceMax) * Time.deltaTime;
         _targetDistance = Mathf.Clamp(_targetDistance, _distanceMin, _distanceMax);
     }
 
