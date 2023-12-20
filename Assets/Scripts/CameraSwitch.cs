@@ -44,7 +44,6 @@ public class CameraSwitch : MonoBehaviour
         index++;
         index = (int)Mathf.Repeat(index, _cameras.Count);
 
-        Debug.Log(index);
         _cameras[index].SetActive(true);
         StartCoroutine(CoroutineCoolDown());
     }

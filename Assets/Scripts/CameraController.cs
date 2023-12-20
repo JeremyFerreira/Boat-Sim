@@ -33,7 +33,7 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     private float _fovMax, _fovMin;
     [SerializeField]
-    [Range(10, 100)]
+    [Range(0, 100)]
     public float _actualDistance;
     private float _targetDistance;
     [SerializeField]
@@ -70,7 +70,7 @@ public class CameraController : MonoBehaviour
         _composer = _virtualCamera.GetCinemachineComponent<CinemachineComposer>();
 
         _targetDistance = _actualDistance;
-
+        _targetAngels = new Vector2(_actualLongitude, _actualLatitude);
         _offsetTracketObject.Init();
     }
 
