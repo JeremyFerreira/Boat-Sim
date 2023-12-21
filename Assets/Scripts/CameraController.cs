@@ -316,7 +316,6 @@ public class FOVHandel
 
     private float CalculateFov(float targetFov)
     {
-        Debug.Log(targetFov);
         _actualFov = Mathf.SmoothDamp(_actualFov, targetFov, ref vel, _acceleration);
         return _actualFov;
     }
@@ -350,10 +349,6 @@ public class FOVModules
 
     private float CalculateFov ()
     {
-
-        Debug.Log(Mathf.InverseLerp(_minInfluence, _maxInfluence, _influenceValue.GetValue) + " " + _influenceValue);
-        Debug.Log( _curve.Evaluate(Mathf.InverseLerp(_minInfluence, _maxInfluence, _influenceValue.GetValue)) + " " + _influenceValue);
-        Debug.Log(Mathf.Lerp(_minFovAdd, _maxFovAdd, _curve.Evaluate(Mathf.InverseLerp(_minInfluence, _maxInfluence, _influenceValue.GetValue))) + " " + _influenceValue);
         return Mathf.Lerp(_minFovAdd, _maxFovAdd, _curve.Evaluate(Mathf.InverseLerp(_minInfluence, _maxInfluence, _influenceValue.GetValue)));
     }
 }

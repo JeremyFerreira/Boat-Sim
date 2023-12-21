@@ -23,8 +23,8 @@ public class GouvernailController : MonoBehaviour
 
     private void OnEnable()
     {
-        _moveBoatElement.OnEnableFunc();
         _moveBoatElement._eventMoveElement += SetGouvernailAngle;
+        _moveBoatElement.OnEnableFunc();
     }
 
     private void OnDisable()

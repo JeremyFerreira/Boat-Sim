@@ -17,19 +17,19 @@ public class MoveBoatElement
     [SerializeField]
     private float _acceleration;
 
+    [SerializeField]
+    [Range(0f, 1f)]
     private float _percent;
     private float _speed;
     private float _way;
     float refVel = 0;
-    public MoveBoatElement ()
-    {
-        _percent = 0f;
-        _speed = 0f;
-        _way = 0;
-    }
+
+
+
     public void OnEnableFunc()
     {
         _inputForMove.OnValueChanged += SetWay;
+        _eventMoveElement?.Invoke(_percent);
     }
 
     public void OnDisableFunc()

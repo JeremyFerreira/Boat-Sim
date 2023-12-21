@@ -5831,7 +5831,7 @@ Camera:
     height: 1
   near clip plane: 1
   far clip plane: 1000
-  field of view: 80
+  field of view: 66.331245
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -5857,8 +5857,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.02943172, y: 0.954463, z: -0.100571014, w: -0.2793199}
-  m_LocalPosition: {x: 82.034836, y: 40.017952, z: 67.65504}
+  m_LocalRotation: {x: -0.015621706, y: 0.9582613, z: -0.05338087, w: -0.28043145}
+  m_LocalPosition: {x: 61.50421, y: 26.232582, z: 35.581577}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14102,8 +14102,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1333894379}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.02943172, y: 0.954463, z: -0.100571014, w: -0.2793199}
-  m_LocalPosition: {x: 49.034836, y: 31.997952, z: 81.65504}
+  m_LocalRotation: {x: -0.015621706, y: 0.9582613, z: -0.05338087, w: -0.28043145}
+  m_LocalPosition: {x: 28.504211, y: 18.212582, z: 49.581577}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14131,7 +14131,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 664313333}
   m_Follow: {fileID: 664313333}
   m_Lens:
-    FieldOfView: 80
+    FieldOfView: 66.331245
     OrthographicSize: 10
     NearClipPlane: 1
     FarClipPlane: 1000
@@ -14212,7 +14212,7 @@ MonoBehaviour:
   _distanceMin: 40
   _fovMax: 90
   _fovMin: 60
-  _actualDistance: 100
+  _actualDistance: 59.5
   _accelerationDistance: 0.3
   _speedDistance: 150
   _moveCamera: {fileID: 11400000, guid: a7977f5ac73e40d4c856d34d2e8c4cf7, type: 2}
@@ -14270,20 +14270,29 @@ MonoBehaviour:
         - serializedVersion: 3
           time: 0
           value: 0
-          inSlope: 2
-          outSlope: 2
+          inSlope: 2.943396
+          outSlope: 2.943396
           tangentMode: 0
           weightedMode: 0
           inWeight: 0
-          outWeight: 0
+          outWeight: 0.041666668
+        - serializedVersion: 3
+          time: 0.31456935
+          value: 0.81428
+          inSlope: 0.81554776
+          outSlope: 0.81554776
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.1729002
         - serializedVersion: 3
           time: 1
           value: 1
-          inSlope: 0
-          outSlope: 0
+          inSlope: 0.02116034
+          outSlope: 0.02116034
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0
+          inWeight: 0.44583333
           outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
@@ -14811,7 +14820,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 65.3179, y: 34.037952, z: 67.638664}
+  m_FollowOffset: {x: 38.864155, y: 20.252583, z: 40.24501}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -17411,6 +17420,11 @@ PrefabInstance:
       objectReference: {fileID: 154930808}
     - target: {fileID: 2849749897534884446, guid: 0c5a18343e44b7d4da98404de2b51bc8,
         type: 3}
+      propertyPath: _moveBoatElement._percent
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849749897534884446, guid: 0c5a18343e44b7d4da98404de2b51bc8,
+        type: 3}
       propertyPath: _moveBoatElement._maxSpeed
       value: 1
       objectReference: {fileID: 0}
@@ -17882,8 +17896,18 @@ PrefabInstance:
       objectReference: {fileID: 727073052}
     - target: {fileID: 5312162700420198572, guid: 0c5a18343e44b7d4da98404de2b51bc8,
         type: 3}
+      propertyPath: _moveSallingElement._percent
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312162700420198572, guid: 0c5a18343e44b7d4da98404de2b51bc8,
+        type: 3}
       propertyPath: _moveSallingElement._maxSpeed
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312162700420198572, guid: 0c5a18343e44b7d4da98404de2b51bc8,
+        type: 3}
+      propertyPath: _rotateSallingElement._percent
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5312162700420198572, guid: 0c5a18343e44b7d4da98404de2b51bc8,
         type: 3}

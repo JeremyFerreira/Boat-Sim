@@ -249,6 +249,7 @@ public class PlaneLodGenerator : MonoBehaviour
 
 }
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(PlaneLodGenerator))]
 public class LevelScriptEditor : Editor
 {
@@ -264,3 +265,4 @@ public class LevelScriptEditor : Editor
         }
     }
 }
+#endif

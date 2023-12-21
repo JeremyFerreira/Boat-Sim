@@ -25,10 +25,10 @@ public class VoileController : MonoBehaviour
         _voileOpenSlider.onValueChanged.AddListener(OpenVoile);
         _voileAngleSlider.onValueChanged.AddListener(RotateVoileBasedOnInput01);
 
-        _moveSallingElement.OnEnableFunc();
-        _rotateSallingElement.OnEnableFunc();
         _moveSallingElement._eventMoveElement += OpenVoile;
         _rotateSallingElement._eventMoveElement += RotateVoileBasedOnInput01;
+        _moveSallingElement.OnEnableFunc();
+        _rotateSallingElement.OnEnableFunc();
     }
     private void OnDisable()
     {
@@ -43,11 +43,12 @@ public class VoileController : MonoBehaviour
     void Start()
     {
         _voileAnimator = GetComponent<Animator>();
-        OpenVoile(0f);
+        //OpenVoile(0f);
     }
     [EasyButtons.Button]
     public void OpenVoile(float value)
     {
+        Debug.Log(value);
         _voileAnimator.Play("VoileOpen", 0, value);
         _voilePhysic.VoileSurfaceMultiplier = value;
     }
