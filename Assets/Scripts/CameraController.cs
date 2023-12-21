@@ -29,11 +29,11 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     private InputFloatScriptableObject _zoomCamera;
     [SerializeField]
+    private bool _invertZoom;
+    [SerializeField]
     private FloatData_SO _distanceBoat;
     [SerializeField]
     public float _distanceMax, _distanceMin;
-    [SerializeField]
-    private float _fovMax, _fovMin;
     [SerializeField]
     [Range(0, 100)]
     public float _actualDistance;
@@ -189,6 +189,7 @@ public class CameraController : MonoBehaviour
     private void CalculTargetDistance(float value)
     {
         if(value == 0) { return; }
+        if(_invertZoom) { value *=  -1; }
         value = Mathf.Clamp(value, -1, 1);
         _targetDistance += value * Mathf.Lerp(_speedDistance * 0.5f, _speedDistance,_actualDistance/_distanceMax) * Time.deltaTime;
         _targetDistance = Mathf.Clamp(_targetDistance, _distanceMin, _distanceMax);

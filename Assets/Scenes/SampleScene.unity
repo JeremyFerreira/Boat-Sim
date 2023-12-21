@@ -5831,7 +5831,7 @@ Camera:
     height: 1
   near clip plane: 1
   far clip plane: 1000
-  field of view: 66.331245
+  field of view: 76.331245
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -14131,7 +14131,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 664313333}
   m_Follow: {fileID: 664313333}
   m_Lens:
-    FieldOfView: 66.331245
+    FieldOfView: 76.331245
     OrthographicSize: 10
     NearClipPlane: 1
     FarClipPlane: 1000
@@ -14207,11 +14207,10 @@ MonoBehaviour:
     _acceleration: 0.5
     defaultOffset: {x: 0, y: 14, z: 0}
   _zoomCamera: {fileID: 11400000, guid: a78c357666d49e842b1ce676df850f65, type: 2}
+  _invertZoom: 1
   _distanceBoat: {fileID: 11400000, guid: e7e7815991db31b43a1f81b1dde4cf5a, type: 2}
   _distanceMax: 100
   _distanceMin: 40
-  _fovMax: 90
-  _fovMin: 60
   _actualDistance: 59.5
   _accelerationDistance: 0.3
   _speedDistance: 150
@@ -14232,8 +14231,8 @@ MonoBehaviour:
         type: 2}
       _minInfluence: 40
       _maxInfluence: 100
-      _minFovAdd: 50
-      _maxFovAdd: 80
+      _minFovAdd: 60
+      _maxFovAdd: 90
       _curve:
         serializedVersion: 2
         m_Curve:
