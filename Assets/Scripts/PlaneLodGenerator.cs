@@ -37,7 +37,7 @@ public class PlaneLodGenerator : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        transform.position = new Vector3(_player.transform.position.x - (transform.localScale.x/2), 0, transform.position.z - (transform.localScale.z / 2));
+        //transform.position = new Vector3(_player.transform.position.x - (transform.localScale.x/2), 0, transform.position.z - (transform.localScale.z / 2));
     }
 
     IEnumerator CoroutineTest()
