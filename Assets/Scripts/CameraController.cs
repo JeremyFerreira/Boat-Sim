@@ -29,6 +29,8 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     private InputFloatScriptableObject _zoomCamera;
     [SerializeField]
+    private FloatData_SO _distanceBoat;
+    [SerializeField]
     public float _distanceMax, _distanceMin;
     [SerializeField]
     private float _fovMax, _fovMin;
@@ -63,6 +65,11 @@ public class CameraController : MonoBehaviour
     private float _speedLatitudeMultiply;
     [SerializeField]
     private float _offsetAboveWater;
+
+    [Space]
+    [Header("FOV")]
+    [SerializeField]
+    private FOVHandel _fovHandel;
 
     private void Start()
     {
@@ -105,6 +112,7 @@ public class CameraController : MonoBehaviour
     public void SetCameraPosition()
     {
         SetComponentRef();
+        _distanceBoat.SetValue = _actualDistance;
         SetCameraPostion(_actualDistance / _distanceMax, _actualLatitude / _maxLatitude, _actualLongitude / 180f);
     }
 
@@ -150,8 +158,8 @@ public class CameraController : MonoBehaviour
 
     public void SetFov()
     {
-        float newFOV = Mathf.Lerp(_fovMin, _fovMax, _actualDistance / _distanceMax);
-        _virtualCamera.m_Lens.FieldOfView = newFOV;
+        //float newFOV = Mathf.Lerp(_fovMin, _fovMax, _actualDistance / _distanceMax);
+        _virtualCamera.m_Lens.FieldOfView = _fovHandel.GetFOv;
     }
 
     public void SetTrackedOffset ()
@@ -165,6 +173,7 @@ public class CameraController : MonoBehaviour
     private void CalculateActualDistance (float target)
     {
         _actualDistance = Mathf.SmoothDamp(_actualDistance, target, ref refVelDistance, _accelerationDistance);
+        _distanceBoat.SetValue = _actualDistance;
     }
 
     float refVelLongitude = 0;
@@ -290,6 +299,65 @@ public class OffsetTracketObject
     }
 }
 
+[Serializable]
+public class FOVHandel
+{
+    [SerializeField]
+    private float _maxFov;
+    [SerializeField]
+    private float _acceleration;
+    [SerializeField]
+    private List<FOVModules> _modules;
+
+    private float _actualFov;
+    private float vel;
+
+    public float GetFOv { get { return CalculateFov(CalculateTargetFov()); } }
+
+    private float CalculateFov(float targetFov)
+    {
+        Debug.Log(targetFov);
+        _actualFov = Mathf.SmoothDamp(_actualFov, targetFov, ref vel, _acceleration);
+        return _actualFov;
+    }
+
+    private float CalculateTargetFov ()
+    {
+       float targetFov = 0;
+       for (int i = 0; i< _modules.Count; i++)
+       {
+            targetFov += _modules[i].GetFOV;
+       }
+        targetFov = Mathf.Clamp(targetFov, 0, _maxFov);
+        return targetFov;
+    }
+}
+
+[Serializable]
+public class FOVModules
+{
+    [SerializeField]
+    [Tooltip("Valeur qui vas influencer la fov ajouter")]
+    private FloatData_SO _influenceValue;
+    [SerializeField]
+    private float _minInfluence, _maxInfluence;
+    [SerializeField]
+    private float _minFovAdd, _maxFovAdd;
+    [SerializeField]
+    private AnimationCurve _curve;
+
+    public float GetFOV { get { return CalculateFov(); } }
+
+    private float CalculateFov ()
+    {
+
+        Debug.Log(Mathf.InverseLerp(_minInfluence, _maxInfluence, _influenceValue.GetValue) + " " + _influenceValue);
+        Debug.Log( _curve.Evaluate(Mathf.InverseLerp(_minInfluence, _maxInfluence, _influenceValue.GetValue)) + " " + _influenceValue);
+        Debug.Log(Mathf.Lerp(_minFovAdd, _maxFovAdd, _curve.Evaluate(Mathf.InverseLerp(_minInfluence, _maxInfluence, _influenceValue.GetValue))) + " " + _influenceValue);
+        return Mathf.Lerp(_minFovAdd, _maxFovAdd, _curve.Evaluate(Mathf.InverseLerp(_minInfluence, _maxInfluence, _influenceValue.GetValue)));
+    }
+}
+
 #if UNITY_EDITOR
 
 [CustomEditor(typeof(CameraController))]
@@ -309,6 +377,7 @@ public class RefreshPostionCamera : Editor
         myScript.SetTrackedOffset();
         myScript.SetFov();
         myScript.SetCameraPosition();
+
     }
 }
 #endif

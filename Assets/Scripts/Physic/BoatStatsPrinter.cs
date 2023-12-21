@@ -6,6 +6,8 @@ using UnityEngine;
 public class BoatStatsPrinter : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _boatSpeedtext;
+    [SerializeField]
+    private FloatData_SO _speedBoat_SO;
 
     private Rigidbody _boatRigidbody;
 
@@ -20,6 +22,12 @@ public class BoatStatsPrinter : MonoBehaviour
 
     private void Update()
     {
+        _speedBoat_SO.SetValue = Mathf.RoundToInt(new Vector3(_boatRigidbody.velocity.x, 0, _boatRigidbody.velocity.z).magnitude * 3.6f);
         _boatSpeedtext.text = (Mathf.RoundToInt(new Vector3(_boatRigidbody.velocity.x,0, _boatRigidbody.velocity.z).magnitude * 3.6f)).ToString() + " km/h";
+    }
+
+    private void OnDisable()
+    {
+        _speedBoat_SO.SetValue = 0;
     }
 }
