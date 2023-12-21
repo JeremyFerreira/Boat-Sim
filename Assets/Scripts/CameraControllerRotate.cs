@@ -1,6 +1,7 @@
-using System.Collections;using System.Collections.Generic;
+
+#if UNITY_EDITOR
 using UnityEditor;
-using UnityEditorInternal.VR;
+#endif
 using UnityEngine;
 
 public class CameraControllerRotate : MonoBehaviour

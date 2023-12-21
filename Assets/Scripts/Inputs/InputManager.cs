@@ -116,8 +116,7 @@ public class InputManager : MonoBehaviour
         _input.Game.ZoomCamera.canceled += ctx => _zoomCamera.ChangeValue(0);
 
         //Pause  
-        _input.Game.Pause.performed += ctx => _pause.ChangeValue(true);
-        _input.Game.Pause.canceled += ctx => _pause.ChangeValue(false);
+        _input.Game.Pause.performed += ctx => _pause.ChangeValue(!_pause.value);
 
         //CameraSwitch  
         _input.Game.SwitchCamera.performed += ctx => _cameraSwitch.ChangeValue(true);
@@ -145,8 +144,8 @@ public class InputManager : MonoBehaviour
         _input.Game.ZoomCamera.canceled += ctx => _zoomCamera.ChangeValue(0);
 
         //Pause
-        _input.Game.Pause.performed -= ctx => _pause.ChangeValue(true);
-        _input.Game.Pause.canceled -= ctx => _pause.ChangeValue(false);
+        _input.Game.Pause.performed -= ctx => _pause.ChangeValue(!_pause.value);
+       // _input.Game.Pause.canceled -= ctx => _pause.ChangeValue(false);
 
         //CameraSwitch  
         _input.Game.SwitchCamera.performed -= ctx => _cameraSwitch.ChangeValue(true);

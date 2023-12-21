@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class BoatSelector : MonoBehaviour
 {
+    [SerializeField]
+    private CinemachineVirtualCamera _startingCamera;
     [SerializeField] CinemachineBrain _brain;
     [SerializeField] CinemachineVirtualCamera[] _virtualCameras;
     [SerializeField] CinemachineVirtualCamera[] _boatVirtualCameras;
@@ -22,13 +24,18 @@ public class BoatSelector : MonoBehaviour
         {
             button.SetActive(false);
         }
-        _buttonsNavigate[0].SetActive(true);
+
+        _startingCamera.gameObject.SetActive(true);
         _currentCameraIndex = 0;
-        _currentCamera = _virtualCameras[_currentCameraIndex];
-        _currentCamera.gameObject.SetActive(true);
+    }
+
+    private void Start()
+    {
+        StartCoroutine(WwaitForEndOfBlendUI());
     }
     public void SwitchCamera(bool next)
     {
+        Debug.Log("je passe");
         _buttonsNavigate[_currentCameraIndex].SetActive(false);
         _currentCameraIndex += next ? 1 : _virtualCameras.Length - 1;
         _currentCameraIndex %= _virtualCameras.Length;
@@ -69,5 +76,17 @@ public class BoatSelector : MonoBehaviour
         //SceneManager.LoadScene(index);
         async.allowSceneActivation = true;
 
+    }
+
+    IEnumerator WwaitForEndOfBlendUI ()
+    {
+        _currentCamera = _virtualCameras[(int)Mathf.Repeat(_currentCameraIndex, _virtualCameras.Length)];
+        _currentCamera.gameObject.SetActive(true);
+        _startingCamera.gameObject.SetActive(false);
+        do
+        {
+            yield return new WaitForEndOfFrame(); 
+        } while (_brain.IsBlending) ;
+        _buttonsNavigate[(int)Mathf.Repeat(_currentCameraIndex, _virtualCameras.Length)].SetActive(true);
     }
 }

@@ -1,9 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class PlaneLodGenerator : MonoBehaviour
 {
